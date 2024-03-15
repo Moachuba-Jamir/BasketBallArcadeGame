@@ -1,5 +1,5 @@
 
-import { startTimer, cD, countDown, pauseAllAudio, playSixty, myScore} from "./functions.js"
+import { startTimer, cD, countDown, pauseAllAudio, playSixty, myScore, displayForm, submitScore} from "./functions.js"
 
 const ws = new WebSocket("ws://localhost:7070");
 
@@ -25,7 +25,9 @@ var gameEnded;
 var newHighscore = false;
 var gameOver = false;
 var isUserTimer = false;
-
+var hScore30 = localStorage.getItem('highscore30');
+var hScore60 = localStorage.getItem('highscore60');
+var hScore90 = localStorage.getItem('highscore90');
 
 // default value if no timer is selected 
 var userTimer  = parseInt(localStorage.getItem('userTimer'));
@@ -120,6 +122,7 @@ ws.addEventListener('open', ()=>{
     
 });
 
+
 // displaying the default timer
 gameTimer.innerHTML = userTimer;
 
@@ -132,6 +135,7 @@ if(gameEnded === "Game Over!"){
 
 
 ws.addEventListener('message',({data})=>{
+  
     gameEnded = gameTimer.innerHTML;
     //user scores
     if(data.includes('1') && gameStarted === true && gameEnded != "Game Over!"){
@@ -140,31 +144,36 @@ ws.addEventListener('message',({data})=>{
         myScore();
 
         // high score
-        if(score > hScore && userTimer === 30){
+        if((score > hScore30) && userTimer === 30){
             newHighscore = true;
             localStorage.setItem('highscore30', score);
+            highScore.innerHTML = score;
             myHscore.play();
             setTimeout(()=>{
                 myHscore.muted = true;
             },  4000);
         }
 
-        if(score > hScore && userTimer === 60){
+        else if((score > hScore60) && userTimer === 60){
             newHighscore = true;
             localStorage.setItem('highscore60', score);
+            highScore.innerHTML = score;
             myHscore.play();
             setTimeout(()=>{
                 myHscore.muted = true;
             },  4000);
         }
-        if(score > hScore && userTimer === 90){
+
+        else if((score > hScore90) && userTimer === 90){
             newHighscore = true;
             localStorage.setItem('highscore90', score);
+            highScore.innerHTML = score;
             myHscore.play();
             setTimeout(()=>{
                 myHscore.muted = true;
             },  4000);
         }
+
            if(gameEnded === "Game Over!"){
             gameOver = true;
             myModal.style.display = 'block';
@@ -208,11 +217,14 @@ ws.addEventListener('message',({data})=>{
 
   
      }  
+
+    //  if the game ends with a new highscore 
      if(gameEnded === 'Game Over!' &&  newHighscore === true){
         // Redirect to another HTML page
        setTimeout(()=>{
-        window.location.href = './leaderboards.html';
-       }, 5000);
+        submitScore();
+        displayForm();
+       }, 2000);
     }
     
  

@@ -7,6 +7,8 @@ const buzzer = document.getElementById('buzzer');
 const sixtyVoice = document.getElementById('sixtyVoice');
 const tick = document.getElementById('tick');
 const score = document.getElementById('score');
+const formContainer = document.getElementById("formContainer");
+const submitHscore = document.getElementById('submitHscore');
 
 
 // game functions
@@ -68,5 +70,17 @@ export function myScore(){
 }
 
 
+export function displayForm(){
+    formContainer.style.display ="flex";
+    formContainer.style.alignItems ="center";
+    formContainer.style.justifyContent ="center";
+}
+
+
+export function submitScore(){
+    submitHscore.addEventListener('click', ()=>{
+        window.location.href='./leaderboards.html';
+    })
+}
 
 

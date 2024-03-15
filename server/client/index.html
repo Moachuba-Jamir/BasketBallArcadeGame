@@ -29,35 +29,55 @@
         <div class="container score display">
             <h1>Score</h1>
             <p id="one" style="color: rgb(71, 232, 238);">Score: </p>
+          
         </div>
-
+        
         <div class="container items ">
             <div class="timer"> <span class="span" id="gameTimer"></span> </div>
-            <div class="timer"><p>Press 2 Start!</p></div>
-            <div class="changeTimer"> ChangeTimer
-              <button type="button"  id="thirty" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                30 seconds
-              </button>
-                <button type="button" id="sixty" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    60 seconds
+              <div class="changeTimer">
+                <div class="row">
+                <div class="col-lg-12">
+                  <h4 class="timerHeader">Change Timer</h4>
+                </div>
+                <hr>
+                <div class="col-lg-12 btnContainer">
+                  <button type="button"  id="thirty" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    30 seconds
                   </button>
-                  <button type="button"  id="ninety" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    90 seconds
-                  </button>
-            </div>
+                    <button type="button" id="sixty" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        60 seconds
+                      </button>
+                      <button type="button"  id="ninety" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        90 seconds
+                      </button>
+                      <button type="button"  id="thirty" class="btn leader btn-primary" data-bs-toggle="modal" data-bs-target="#leaderBoardModal">
+                        Leaderboards
+                       </button>
+                </div>
+                </div>
+              </div>
         </div>
+
+
+
 
         <div class="container hScore display">
             <h1>HighScore</h1>
             <h3>Game Timer: <span id="showTimer"></span> </h3> 
             <p id="hScore" style="color: rgb(237, 228, 95);"></p> 
+
+            <div class="leaderBoards">
+            
+                 
+            </div>
         </div>
     </div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button>
+    <!-- submit form -->
+    <div class="container-fluid" id="formContainer">
+      <input type="text" placeholder="Enter your name">
+      <input type="submit" value="submit" id="submitHscore">
+    </div>
   
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -74,6 +94,37 @@
     </div>
   </div>
 
+    <!-- LeaderBoard Modal -->
+    <div class="modal fade" id="leaderBoardModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog leaderDialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel"> Leaderboards </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body leaderBody">
+              <div class="container thrity">
+                <h5 style="text-align: center;">Time Mode:  30 seconds</h5>
+                <hr>
+                <table>
+                  <tr>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Score</th>
+                  </tr>
+                  <tr>
+                    <td>Placeholder Name</td>
+                    <td>Placeholder Department</td>
+                    <td>Placeholder Score</td>
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </table>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
 
 
     <script type="module" src="client.js"></script>
