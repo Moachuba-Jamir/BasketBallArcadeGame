@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.ico">
+    <title>Arcade Basketball game</title>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+<body>
+    <!-- game audio fx  -->
+    <audio src="/assets//audio/lets go.mp3" id="start"></audio>
+    <audio src="/assets//audio/ping1.mp3" id="timer"></audio>
+    <audio src="/assets//audio/gameover.wav" id="buzzer"></audio>
+    <audio src="/assets//audio/sixty.mp3" id="sixtyVoice"></audio>
+    <audio src="/assets//audio/tickme.wav" id="tick"></audio>
+    <audio src="/assets//audio/scoreBall.mp3" id="score"></audio>
+    <audio src="/assets//audio/hScore.wav" id="hScoreAudio"></audio>
+
+
+
+
+    <div class="container title"><h2>BasketBall Game</h2></div>
+    <div class="container-fluid gameContainer">
+        <div class="container score display">
+            <h3>Score</h3>
+            <p id="one" style="color: rgb(71, 232, 238);">Score: </p>
+        </div>
+
+        <div class="container items ">
+            <div class="timer"> <span class="span" id="gameTimer"></span> </div>
+            <div class="timer"><p>Press 2 Start!</p></div>
+            <div class="changeTimer"> ChangeTimer
+                <button type="button" id="thirty" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    60 seconds
+                  </button>
+                  <button type="button"  id="sixty" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    90 seconds
+                  </button>
+            </div>
+        </div>
+
+        <div class="container hScore display">
+            <h3>HighScore</h3>
+            <p id="hScore" style="color: rgb(237, 228, 95);"></p> 
+        </div>
+    </div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel"> HEY </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <h2 id="notify"></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script type="module" src="client.js"></script>
+    <script type ="module" src="functions.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        console.log("%cARCADE BASKETBALL GAME", 
+                    "background-color: orange; font-size: 30px; text-align:center"+
+                    "border: 1px solid orange; border-radius: 10px; margin-block:20px;"+
+                    "padding-inline: 5%; padding-block: 2%");
+    </script>
+</body>
+</html>
