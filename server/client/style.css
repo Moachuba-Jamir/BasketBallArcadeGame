@@ -19,6 +19,7 @@ body{
 
 }
 .display{
+    position: relative;
     height: 65%;
     width: 40%;
     border: 1px solid green;
@@ -31,13 +32,44 @@ body{
     height: 65%;
     width: 15%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
 }
+.row{
+margin-top: 50%;
+}
 
-.items .timer{
-    padding-top: -25%;
+.timerHeader{
+        text-align: center;
+}
+.changeTimer h4{
+    text-align: center;
+}
+.btnContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.leaderBoards{
+    height: 75%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.btn{
+    margin: 5%;
+    width: 120px;
+}
+
+
+.leader{
+    width: 180px;
+    margin-top: 15%;
 }
 
 .span{
@@ -70,3 +102,35 @@ body{
    background-color: rgba(255, 255, 255, 0);
 }
 
+#formContainer{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(135, 236, 222, 0.7) ;
+    height: 50vh;
+    width: 50vw;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+.leaderDialog {
+    position: absolute;
+    top: 20%;
+    height: 100vh;
+    width: 100vw;
+    left: 50%;
+    transform: translate(-50%, -20%) !important;
+    -webkit-transform: translate(-50%, -20%) !important;
+    -moz-transform: translate(-50%, -20%) !important;
+    -ms-transform: translate(-50%, -20%) !important;
+    -o-transform: translate(-50%, -20%) !important;
+}
+
+
+.leaderBody{
+    height: 600px !important;
+}
