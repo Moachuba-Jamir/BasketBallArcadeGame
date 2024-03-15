@@ -27,7 +27,7 @@
     <div class="container title"><h2>BasketBall Game</h2></div>
     <div class="container-fluid gameContainer">
         <div class="container score display">
-            <h3>Score</h3>
+            <h1>Score</h1>
             <p id="one" style="color: rgb(71, 232, 238);">Score: </p>
         </div>
 
@@ -35,17 +35,21 @@
             <div class="timer"> <span class="span" id="gameTimer"></span> </div>
             <div class="timer"><p>Press 2 Start!</p></div>
             <div class="changeTimer"> ChangeTimer
-                <button type="button" id="thirty" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <button type="button"  id="thirty" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                30 seconds
+              </button>
+                <button type="button" id="sixty" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     60 seconds
                   </button>
-                  <button type="button"  id="sixty" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <button type="button"  id="ninety" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     90 seconds
                   </button>
             </div>
         </div>
 
         <div class="container hScore display">
-            <h3>HighScore</h3>
+            <h1>HighScore</h1>
+            <h3>Game Timer: <span id="showTimer"></span> </h3> 
             <p id="hScore" style="color: rgb(237, 228, 95);"></p> 
         </div>
     </div>
@@ -70,9 +74,13 @@
     </div>
   </div>
 
+
+
     <script type="module" src="client.js"></script>
     <script type ="module" src="functions.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- console styling -->
     <script>
         console.log("%cARCADE BASKETBALL GAME", 
                     "background-color: orange; font-size: 30px; text-align:center"+

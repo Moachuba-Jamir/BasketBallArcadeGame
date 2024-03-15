@@ -9,8 +9,6 @@ const tick = document.getElementById('tick');
 const score = document.getElementById('score');
 
 
-
-
 // game functions
  export function startTimer(userTimer){
     if(intervalId) clearInterval(intervalId);
@@ -68,6 +66,7 @@ export function playSixty(){
 export function myScore(){
     score.play();
 }
+
 
 
 
