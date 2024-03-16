@@ -65,18 +65,38 @@
             <h1>HighScore</h1>
             <h3>Game Timer: <span id="showTimer"></span> </h3> 
             <p id="hScore" style="color: rgb(237, 228, 95);"></p> 
-
-            <div class="leaderBoards">
             
-                 
+            <!-- high score display -->
+            <div class="container">
+              <h3 style="text-align: center;">Current HighScore</h3>
+              <div class="tableContainer">
+                <table>
+                  <tr>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Score</th>
+                  </tr>
+                  <tr>
+                    <td id="name"></td>
+                    <td id="dept"></td>
+                    <td id="currentHscore"></td>
+                  </tr>
+                </table>
+              </div>
             </div>
         </div>
     </div>
 
     <!-- submit form -->
     <div class="container-fluid" id="formContainer">
-      <input type="text" placeholder="Enter your name">
-      <input type="submit" value="submit" id="submitHscore">
+      <input id="userName" class="nameInput" type="text" placeholder="Enter your name">
+      <button class="btns bca">BCA</button>
+      <button class="btns mca">MCA</button>
+      <button class="btns ba">BA</button>
+      <button class="btns bcom">B.COM</button>
+      <button class="btns mba">MBA</button>
+      <button class="btns ma">MA</button>
+      <input  class="submitInput" type="submit" value="submit" id="submitHscore">
     </div>
   
   <!-- Modal -->

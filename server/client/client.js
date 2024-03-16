@@ -1,5 +1,5 @@
 
-import { startTimer, cD, countDown, pauseAllAudio, playSixty, myScore, displayForm, submitScore} from "./functions.js"
+import { startTimer, cD, countDown, pauseAllAudio, playSixty, myScore, displayForm, submitScore, updatescore} from "./functions.js"
 
 const ws = new WebSocket("ws://localhost:7070");
 
@@ -13,10 +13,11 @@ const showTimer = document.getElementById('showTimer');
 const tick = document.getElementById('tick');
 const gameTimer = document.getElementById('gameTimer');
 const myHscore = document.getElementById('hScoreAudio');
+const btns = document.querySelectorAll('.btns');
+const submitHscore = document.getElementById('submitHscore');
+const userName = document.getElementById('userName');
 var myModalBody = document.getElementById('notify');
 var myModal = document.getElementById('exampleModal')
-
-
 var score = 0;
 var hScore = 0;
 p.innerHTML = score;
@@ -28,6 +29,8 @@ var isUserTimer = false;
 var hScore30 = localStorage.getItem('highscore30');
 var hScore60 = localStorage.getItem('highscore60');
 var hScore90 = localStorage.getItem('highscore90');
+var dept;
+var is30  = false, is60 = false, is90 = false;
 
 // default value if no timer is selected 
 var userTimer  = parseInt(localStorage.getItem('userTimer'));
@@ -76,7 +79,64 @@ ninety.addEventListener('click', ()=>{
 });
 
 
-// retrieving the highscore on browser refresh 
+// adding eventListener to the submit buttons on Highscore
+btns.forEach((button)=>{
+    button.addEventListener('click', ()=>{
+        let val = button.innerHTML;
+        switch(val){
+            case 'BCA':
+                dept = 'BCA';
+                break;
+            case 'MCA':
+                dept = 'MCA';
+                break;
+            case 'BA':
+                dept = 'BA';
+                break;
+            case 'B.COM':
+                dept = 'B.COM';
+            break;
+            case 'MBA':
+                dept = 'MBA';
+                break;
+            case 'MA':
+                dept = 'MA';
+            break;
+            default:
+                console.log('Default option');
+                break;
+        }
+    })
+});
+
+// on HighScore submit
+// pending error handling 
+submitHscore.addEventListener('click', ()=>{
+    let name = userName.value;
+    if(dept != '' && name != ''){
+        console.log(`name : ${name}`);
+        console.log(`department: ${dept}`);
+        // we store the values in the local storage
+        if(is30 === true){
+            console.log(hScore30);
+            updatescore(name, dept, hScore30);
+
+        }else if (is60 === true){
+            console.log(hScore60);
+            updatescore(name, dept, hScore60);
+        }else if(is90 === true){
+            console.log(hScore90);
+            updatescore(name, dept, hScore90);
+        }else{
+            console.warn("error could not retrieve the highscore from an game modes!");
+        }
+    } 
+    else{
+        console.log("Enter both your name and department!");
+    }
+
+});
+// setting initial highscore localstorage values on browser load 
 window.addEventListener('DOMContentLoaded', ()=>{
     highScore.innerHTML = hScore;
 
@@ -91,6 +151,15 @@ window.addEventListener('DOMContentLoaded', ()=>{
     // for 90 second mode
     if(!localStorage.getItem('highscore90')){
         localStorage.setItem('highscore90', hScore);
+    }
+    if(!localStorage.getItem('userHighScore30')){
+        localStorage.setItem('userHighScore30', '');
+    }
+    if(!localStorage.getItem('userHighScore60')){
+        localStorage.setItem('userHighScore60', '');
+    }
+    if(!localStorage.getItem('userHighScore90')){
+        localStorage.setItem('userHighScore90', '');
     }
 
     switch(userTimer){
@@ -135,14 +204,32 @@ if(gameEnded === "Game Over!"){
 
 
 ws.addEventListener('message',({data})=>{
-  
+        //setting state for game modes 
+        switch(userTimer){
+            case 30:
+                is30 = true;
+                is60 = false;
+                is90 = false;
+                break;
+            case 60:
+                is60 = true;
+                is30 = false;
+                is90 = false;
+                break;
+            case 90:
+                is90 = true;
+                is30 = false;
+                is60 = false;
+                break;
+        }
+
     gameEnded = gameTimer.innerHTML;
     //user scores
     if(data.includes('1') && gameStarted === true && gameEnded != "Game Over!"){
         score += 2;
         p.innerHTML = score;
         myScore();
-
+    
         // high score
         if((score > hScore30) && userTimer === 30){
             newHighscore = true;
@@ -184,9 +271,6 @@ ws.addEventListener('message',({data})=>{
 
     // start button is pressed 
     if(data.includes('s')){
-        
-
-
         gameStarted = false;
         score = 0;
         pauseAllAudio();
