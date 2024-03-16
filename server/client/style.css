@@ -4,7 +4,9 @@
     box-sizing: border-box;
     overflow: hidden;
 }
-
+label{
+    color: white;
+}
 body{
     background-color: rgb(50, 50, 50);
 }
@@ -54,12 +56,6 @@ margin-top: 50%;
 }
 
 
-.leaderBoards{
-    height: 75%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-}
 
 .btn{
     margin: 5%;
@@ -78,6 +74,7 @@ margin-top: 50%;
 }
 
 .modal-dialog {
+
     position: absolute;
     top: 50%;
     height: 100vh;
@@ -103,7 +100,7 @@ margin-top: 50%;
 }
 
 #formContainer{
-    display: none;
+    display: block;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -116,6 +113,15 @@ margin-top: 50%;
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
+}
+
+.btns{
+    height: 30px;
+    width: 100px;
+}
+.nameInput{
+    height: 40px;
+    width: 100%;
 }
 .leaderDialog {
     position: absolute;
@@ -133,4 +139,22 @@ margin-top: 50%;
 
 .leaderBody{
     height: 600px !important;
+}
+.tableContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table{
+    border: 1px solid orange;
+    width: 80%;
+    border-collapse: collapse;
+    color: white;
+    padding-inline: 15%;
+}
+
+tr,th{
+    text-align: center;
+    margin-inline: 15%;
 }

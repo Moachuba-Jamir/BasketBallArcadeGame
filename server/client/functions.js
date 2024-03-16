@@ -9,6 +9,9 @@ const tick = document.getElementById('tick');
 const score = document.getElementById('score');
 const formContainer = document.getElementById("formContainer");
 const submitHscore = document.getElementById('submitHscore');
+const name = document.getElementById('name');
+const dept = document.getElementById('dept');
+const currentHscore = document.getElementById('currentHscore');
 
 
 // game functions
@@ -39,6 +42,12 @@ const submitHscore = document.getElementById('submitHscore');
     }, 1000);
 };
 
+export function updatescore(userName, userDept, score){
+    
+    name.innerHTML = userName;
+    dept.innerHTML = userDept
+    currentHscore.innerHTML  = score;
+}
 
 
 export function cD(){
