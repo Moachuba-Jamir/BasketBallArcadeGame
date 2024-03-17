@@ -1,17 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.ico">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../../assets/images/favicon.ico"
+    />
     <title>Arcade Basketball game</title>
-    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-
-
-<body>
+  <body>
     <!-- game audio fx  -->
     <audio src="/assets//audio/lets go.mp3" id="start"></audio>
     <audio src="/assets//audio/ping1.mp3" id="timer"></audio>
@@ -21,142 +27,193 @@
     <audio src="/assets//audio/scoreBall.mp3" id="score"></audio>
     <audio src="/assets//audio/hScore.wav" id="hScoreAudio"></audio>
 
-
-
+    idv
 
     <div class="container title"><h2>BasketBall Game</h2></div>
     <div class="container-fluid gameContainer">
-        <div class="container score display">
-            <h1>Score</h1>
-            <p id="one" style="color: rgb(71, 232, 238);">Score: </p>
-          
-        </div>
-        
-        <div class="container items ">
-            <div class="timer"> <span class="span" id="gameTimer"></span> </div>
-              <div class="changeTimer">
-                <div class="row">
-                <div class="col-lg-12">
-                  <h4 class="timerHeader">Change Timer</h4>
-                </div>
-                <hr>
-                <div class="col-lg-12 btnContainer">
-                  <button type="button"  id="thirty" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    30 seconds
-                  </button>
-                    <button type="button" id="sixty" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        60 seconds
-                      </button>
-                      <button type="button"  id="ninety" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        90 seconds
-                      </button>
-                      <button type="button"  id="thirty" class="btn leader btn-primary" data-bs-toggle="modal" data-bs-target="#leaderBoardModal">
-                        Leaderboards
-                       </button>
-                </div>
-                </div>
-              </div>
-        </div>
+      <div class="container score display">
+        <h1>Score</h1>
+        <p id="one" style="color: rgb(71, 232, 238)">Score:</p>
+      </div>
 
-
-
-
-        <div class="container hScore display">
-            <h1>HighScore</h1>
-            <h3>Game Timer: <span id="showTimer"></span> </h3> 
-            <p id="hScore" style="color: rgb(237, 228, 95);"></p> 
-            
-            <!-- high score display -->
-            <div class="container">
-              <h3 style="text-align: center;">Current HighScore</h3>
-              <div class="tableContainer">
-                <table>
-                  <tr>
-                    <th>Name</th>
-                    <th>Department</th>
-                    <th>Score</th>
-                  </tr>
-                  <tr>
-                    <td id="name"></td>
-                    <td id="dept"></td>
-                    <td id="currentHscore"></td>
-                  </tr>
-                </table>
-              </div>
+      <div class="container items">
+        <div class="timer"><span class="span" id="gameTimer"></span></div>
+        <div class="changeTimer">
+          <div class="row">
+            <div class="col-lg-12">
+              <h4 class="timerHeader">Change Timer</h4>
             </div>
+            <hr />
+            <div class="col-lg-12 btnContainer">
+              <button
+                type="button"
+                id="thirty"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                >
+                30 seconds
+              </button>
+              <button
+                type="button"
+                id="sixty"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                60 seconds
+              </button>
+              <button
+                type="button"
+                id="ninety"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                90 seconds
+              </button>
+              <button
+                type="button"
+                id="thirty"
+                class="btn leader btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#leaderBoardModal"
+              >
+                Leaderboards
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="container hScore display">
+        <h1>HighScore</h1>
+        <h3>Game Timer: <span id="showTimer"></span></h3>
+        <p id="hScore" style="color: rgb(237, 228, 95)"></p>
+
+        <!-- high score display -->
+        <div class="container">
+          <h3 style="text-align: center">Current HighScore</h3>
+          <div class="tableContainer">
+            <table>
+              <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Score</th>
+              </tr>
+              <tr>
+                <td id="name"></td>
+                <td id="dept"></td>
+                <td id="currentHscore"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- submit form -->
     <div class="container-fluid" id="formContainer">
-      <input id="userName" class="nameInput" type="text" placeholder="Enter your name">
+      <input
+        id="userName"
+        class="nameInput"
+        type="text"
+        placeholder="Enter your name"
+      />
       <button class="btns bca">BCA</button>
       <button class="btns mca">MCA</button>
       <button class="btns ba">BA</button>
       <button class="btns bcom">B.COM</button>
       <button class="btns mba">MBA</button>
       <button class="btns ma">MA</button>
-      <input  class="submitInput" type="submit" value="submit" id="submitHscore">
+      <input
+        class="submitInput"
+        type="submit"
+        value="submit"
+        id="submitHscore"
+      />
     </div>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="exampleModalLabel"> HEY </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">HEY</h3>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
             <h2 id="notify"></h2>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
     <!-- LeaderBoard Modal -->
-    <div class="modal fade" id="leaderBoardModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div
+      class="modal fade"
+      id="leaderBoardModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
       <div class="modal-dialog leaderDialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLabel"> Leaderboards </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h3 class="modal-title" id="exampleModalLabel">Leaderboards</h3>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
           <div class="modal-body leaderBody">
-              <div class="container thrity">
-                <h5 style="text-align: center;">Time Mode:  30 seconds</h5>
-                <hr>
-                <table>
-                  <tr>
-                    <th>Name</th>
-                    <th>Department</th>
-                    <th>Score</th>
-                  </tr>
-                  <tr>
-                    <td>Placeholder Name</td>
-                    <td>Placeholder Department</td>
-                    <td>Placeholder Score</td>
-                  </tr>
-                  <!-- Add more rows as needed -->
-                </table>
-              </div>
+            <div class="container thrity">
+              <h5 style="text-align: center">Time Mode: 30 seconds</h5>
+              <hr />
+              <table>
+                <tr>
+                  <th>Name</th>
+                  <th>Department</th>
+                  <th>Score</th>
+                </tr>
+                <tr>
+                  <td>Placeholder Name</td>
+                  <td>Placeholder Department</td>
+                  <td>Placeholder Score</td>
+                </tr>
+                <!-- Add more rows as needed -->
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  
-
 
     <script type="module" src="client.js"></script>
-    <script type ="module" src="functions.js"></script>
+    <script type="module" src="functions.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- console styling -->
     <script>
-        console.log("%cARCADE BASKETBALL GAME", 
-                    "background-color: orange; font-size: 30px; text-align:center"+
-                    "border: 1px solid orange; border-radius: 10px; margin-block:20px;"+
-                    "padding-inline: 5%; padding-block: 2%");
+      console.log(
+        "%cARCADE BASKETBALL GAME",
+        "background-color: orange; font-size: 30px; text-align:center" +
+          "border: 1px solid orange; border-radius: 10px; margin-block:20px;" +
+          "padding-inline: 5%; padding-block: 2%"
+      );
     </script>
-</body>
+  </body>
 </html>
