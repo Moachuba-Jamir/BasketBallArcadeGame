@@ -8,11 +8,11 @@ const sixtyVoice = document.getElementById("sixtyVoice");
 const tick = document.getElementById("tick");
 const score = document.getElementById("score");
 const formContainer = document.getElementById("formContainer");
+
 const submitHscore = document.getElementById("submitHscore");
 const name = document.getElementById("name");
 const dept = document.getElementById("dept");
 const currentHscore = document.getElementById("currentHscore");
-
 // for updating leader boards
 var table30Name = document.getElementById("30Name");
 var table30Dept = document.getElementById("30dept");
@@ -58,6 +58,7 @@ export function startTimer(userTimer) {
 }
 
 export function updatescore(userName, userDept, score) {
+
   if (userName === 0 && userDept === 0) {
     name.innerHTML = "------";
     dept.innerHTML = "------";
