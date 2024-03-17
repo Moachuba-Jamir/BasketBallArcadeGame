@@ -6,8 +6,9 @@ import {
   playSixty,
   myScore,
   displayForm,
-  submitScore,
   updatescore,
+  hideForm,
+  updateLeaderboards,
 } from "./functions.js";
 
 const ws = new WebSocket("ws://localhost:7070");
@@ -33,7 +34,6 @@ var gameStarted = false;
 var gameEnded;
 var newHighscore = false;
 var gameOver = false;
-var isUserTimer = false;
 var hScore30 = localStorage.getItem("highscore30");
 var hScore60 = localStorage.getItem("highscore60");
 var hScore90 = localStorage.getItem("highscore90");
@@ -41,13 +41,24 @@ var dept;
 var is30 = false,
   is60 = false,
   is90 = false;
+var user30 = [],
+  user60 = [],
+  user90 = [];
 
+function addHighScore(myuserTimer, myHscore) {
+  let myUser = JSON.parse(localStorage.getItem(`userHighScore${myuserTimer}`));
+  if (myUser === 0) {
+    updatescore(0, 0, myHscore);
+  } else {
+    updatescore(myUser[0], myUser[1], myHscore);
+  }
+}
 // default value if no timer is selected
 var userTimer = parseInt(localStorage.getItem("userTimer"));
 
 // setting userDefined Timer
 thirty.addEventListener("click", () => {
-  isUserTimer = true;
+  
   userTimer = 30;
   localStorage.setItem("userTimer", 30);
   myModal.classList.remove("modal-backdrop");
@@ -55,12 +66,13 @@ thirty.addEventListener("click", () => {
   var msg = `Timer changed to ${userTimer} Seconds Press start to play! `;
   myModalBody.innerHTML = msg;
   highScore.innerHTML = localStorage.getItem("highscore30");
+  let myHscore = localStorage.getItem("highscore30");
+  addHighScore(userTimer, myHscore);
   gameTimer.innerHTML = userTimer;
   showTimer.innerHTML = `${userTimer}  seconds`;
 });
 
 sixty.addEventListener("click", () => {
-  isUserTimer = true;
   userTimer = 60;
   localStorage.setItem("userTimer", 60);
   myModal.classList.remove("modal-backdrop");
@@ -69,12 +81,13 @@ sixty.addEventListener("click", () => {
   myModalBody.innerHTML = msg;
   playSixty();
   highScore.innerHTML = localStorage.getItem("highscore60");
+  let myHscore = localStorage.getItem("highscore60");
+  addHighScore(userTimer, myHscore);
   gameTimer.innerHTML = userTimer;
   showTimer.innerHTML = `${userTimer}  seconds`;
 });
 
 ninety.addEventListener("click", () => {
-  isUserTimer = true;
   userTimer = 90;
   localStorage.setItem("userTimer", 90);
   myModal.classList.remove("modal-backdrop");
@@ -82,6 +95,8 @@ ninety.addEventListener("click", () => {
   var msg = `Timer changed to ${userTimer} Seconds Press start to play! `;
   myModalBody.innerHTML = msg;
   highScore.innerHTML = localStorage.getItem("highscore90");
+  let myHscore = localStorage.getItem("highscore90");
+  addHighScore(userTimer, myHscore);
   gameTimer.innerHTML = userTimer;
   showTimer.innerHTML = `${userTimer}  seconds`;
 });
@@ -121,18 +136,27 @@ btns.forEach((button) => {
 submitHscore.addEventListener("click", () => {
   let name = userName.value;
   if (dept != "" && name != "") {
-    console.log(`name : ${name}`);
-    console.log(`department: ${dept}`);
     // we store the values in the local storage
     if (is30 === true) {
-      console.log(hScore30);
-      updatescore(name, dept, hScore30);
+      let userNewScore = localStorage.getItem("highscore30");
+      updatescore(name, dept, userNewScore);
+      user30.push(name, dept);
+      console.log(`from submit:  ${user30}`);
+      localStorage.setItem("userHighScore30", JSON.stringify(user30));
     } else if (is60 === true) {
+      let userNewScore = localStorage.getItem("highscore60");
+      console.log(`from 60 : ${is30} : ${is60}`);
       console.log(hScore60);
-      updatescore(name, dept, hScore60);
+      updatescore(name, dept, userNewScore);
+      user60.push(name, dept);
+      console.log(`from submit:  ${user60}`);
+      localStorage.setItem("userHighScore60", JSON.stringify(user60));
     } else if (is90 === true) {
-      console.log(hScore90);
-      updatescore(name, dept, hScore90);
+      let userNewScore = localStorage.getItem("highscore90");
+      updatescore(name, dept, userNewScore);
+      user90.push(name, dept);
+      console.log(`from submit:  ${user90}`);
+      localStorage.setItem("userHighScore90", JSON.stringify(user90));
     } else {
       console.warn(
         "error could not retrieve the highscore from an game modes!"
@@ -141,11 +165,21 @@ submitHscore.addEventListener("click", () => {
   } else {
     console.log("Enter both your name and department!");
   }
+  setTimeout(() => {
+    hideForm();
+  }, 2000);
+  displayForm();
+
+  // update the leaderboards
+  updateLeaderboards();
 });
+
 // setting initial highscore localstorage values on browser load
 window.addEventListener("DOMContentLoaded", () => {
   highScore.innerHTML = hScore;
-
+  // updating the leaderboards 
+  updateLeaderboards();
+  
   // for 30 second mode
   if (!localStorage.getItem("highscore30")) {
     localStorage.setItem("highscore30", hScore);
@@ -158,31 +192,41 @@ window.addEventListener("DOMContentLoaded", () => {
   if (!localStorage.getItem("highscore90")) {
     localStorage.setItem("highscore90", hScore);
   }
+
+  // retrieving high score for diff time modes
   if (!localStorage.getItem("userHighScore30")) {
-    localStorage.setItem("userHighScore30", "");
+    localStorage.setItem("userHighScore30", "0");
   }
   if (!localStorage.getItem("userHighScore60")) {
-    localStorage.setItem("userHighScore60", "");
+    localStorage.setItem("userHighScore60", "0");
   }
+
   if (!localStorage.getItem("userHighScore90")) {
-    localStorage.setItem("userHighScore90", "");
+    localStorage.setItem("userHighScore90", "0");
   }
 
   switch (userTimer) {
     case 30:
       console.log(userTimer);
       highScore.innerHTML = localStorage.getItem("highscore30");
+      let myHscore30 = localStorage.getItem("highscore30");
       showTimer.innerHTML = `${userTimer}  seconds`;
+      addHighScore(userTimer, myHscore30);
       break;
+
     case 60:
       console.log(userTimer);
       highScore.innerHTML = localStorage.getItem("highscore60");
+      let myHscore60 = localStorage.getItem("highscore60");
       showTimer.innerHTML = `${userTimer}  seconds`;
+      addHighScore(userTimer, myHscore60);
       break;
     case 90:
       console.log(userTimer);
       highScore.innerHTML = localStorage.getItem("highscore90");
+      let myHscore90 = localStorage.getItem("highscore90");
       showTimer.innerHTML = `${userTimer}  seconds`;
+      addHighScore(userTimer, myHscore90);
       break;
     default:
       console.log(userTimer);
@@ -304,7 +348,6 @@ ws.addEventListener("message", ({ data }) => {
   if (gameEnded === "Game Over!" && newHighscore === true) {
     // Redirect to another HTML page
     setTimeout(() => {
-      submitScore();
       displayForm();
     }, 2000);
   }
