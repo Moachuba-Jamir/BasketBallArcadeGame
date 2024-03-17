@@ -51,7 +51,7 @@
                 class="btn btn-primary"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
-                >
+              >
                 30 seconds
               </button>
               <button
@@ -95,11 +95,11 @@
         <div class="container">
           <h3 style="text-align: center">Current HighScore</h3>
           <div class="tableContainer">
-            <table>
+            <table id="hscoreTable">
               <tr>
-                <th>Name</th>
-                <th>Department</th>
-                <th>Score</th>
+                <th id="hscoreName">Name</th>
+                <th id="hscoreDept">Department</th>
+                <th id="hscoreScore">Score</th>
               </tr>
               <tr>
                 <td id="name"></td>
@@ -180,8 +180,8 @@
             ></button>
           </div>
           <div class="modal-body leaderBody">
-            <div class="container thrity">
-              <h5 style="text-align: center">Time Mode: 30 seconds</h5>
+            <div class="container thirty">
+              <h5 style="text-align: center">Time Mode: 30 Seconds</h5>
               <hr />
               <table>
                 <tr>
@@ -190,11 +190,42 @@
                   <th>Score</th>
                 </tr>
                 <tr>
-                  <td>Placeholder Name</td>
-                  <td>Placeholder Department</td>
-                  <td>Placeholder Score</td>
+                  <td id="30Name"></td>
+                  <td id="30dept"></td>
+                  <td id="30score"></td>
                 </tr>
-                <!-- Add more rows as needed -->
+              </table>
+            </div>
+            <div class="container sixty">
+              <h5 style="text-align: center">Time Mode: 60 Seconds</h5>
+              <hr />
+              <table>
+                <tr>
+                  <th>Name</th>
+                  <th>Department</th>
+                  <th>Score</th>
+                </tr>
+                <tr>
+                  <td id="60Name"></td>
+                  <td id="60dept"></td>
+                  <td id="60score"></td>
+                </tr>
+              </table>
+            </div>
+            <div class="container ninety">
+              <h5 style="text-align: center">Time Mode: 90 Seconds</h5>
+              <hr />
+              <table>
+                <tr>
+                  <th>Name</th>
+                  <th>Department</th>
+                  <th>Score</th>
+                </tr>
+                <tr>
+                  <td id="90Name"></td>
+                  <td id="90dept"></td>
+                  <td id="90score"></td>
+                </tr>
               </table>
             </div>
           </div>

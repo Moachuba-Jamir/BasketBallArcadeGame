@@ -13,6 +13,20 @@ const name = document.getElementById("name");
 const dept = document.getElementById("dept");
 const currentHscore = document.getElementById("currentHscore");
 
+// for updating leader boards
+var table30Name = document.getElementById("30Name");
+var table30Dept = document.getElementById("30dept");
+var table30Score = document.getElementById("30score");
+
+var table60Name = document.getElementById("60Name");
+var table60Dept = document.getElementById("60dept");
+var table60Score = document.getElementById("60score");
+
+var table90Name = document.getElementById("90Name");
+var table90Dept = document.getElementById("90dept");
+var table90Score = document.getElementById("90score");
+
+
 // game functions
 export function startTimer(userTimer) {
   if (intervalId) clearInterval(intervalId);
@@ -44,9 +58,15 @@ export function startTimer(userTimer) {
 }
 
 export function updatescore(userName, userDept, score) {
-  name.innerHTML = userName;
-  dept.innerHTML = userDept;
-  currentHscore.innerHTML = score;
+  if (userName === 0 && userDept === 0) {
+    name.innerHTML = "------";
+    dept.innerHTML = "------";
+    currentHscore.innerHTML = score;
+  } else {
+    name.innerHTML = userName;
+    dept.innerHTML = userDept;
+    currentHscore.innerHTML = score;
+  }
 }
 
 export function cD() {
@@ -83,8 +103,47 @@ export function displayForm() {
   formContainer.style.justifyContent = "center";
 }
 
-export function submitScore() {
-  submitHscore.addEventListener("click", () => {
-    window.location.href = "./leaderboards.html";
-  });
+export function hideForm() {
+  formContainer.style.display = "none";
+  formContainer.style.visibility = "hidden";
+}
+
+export function updateLeaderboards() {
+  var for30 = localStorage.getItem('highscore30');
+  var for60 = localStorage.getItem('highscore60');
+  var for90 = localStorage.getItem('highscore90');
+
+  var user30 = JSON.parse(localStorage.getItem('userHighScore30'));
+  var user60 = JSON.parse(localStorage.getItem("userHighScore60"));
+  var user90 = JSON.parse(localStorage.getItem("userHighScore90"));
+
+  if (user30 != 0) {
+      table30Name.innerHTML = user30[0];
+      table30Dept.innerHTML = user30[1];
+      table30Score.innerHTML = for30;
+  } else {
+      table30Name.innerHTML = '-----';
+      table30Dept.innerHTML = '-----';
+      table30Score.innerHTML = '-----';
+  }
+
+  if (user60 != 0) {
+    table60Name.innerHTML = user60[0];
+    table60Dept.innerHTML = user60[1];
+    table60Score.innerHTML = for60;
+  } else {
+      table60Name.innerHTML = "-----";
+      table60Dept.innerHTML = "-----";
+      table60Score.innerHTML = "-----";
+}
+
+  if (user90 != 0) {
+    table90Name.innerHTML = user90[0];
+    table90Dept.innerHTML = user90[1];
+    table90Score.innerHTML = for90;
+  } else {
+     table90Name.innerHTML = "-----";
+     table90Dept.innerHTML = "-----";
+     table90Score.innerHTML = "-----";
+ }
 }
