@@ -1,0 +1,9 @@
+{
+  "scssFormatter.singleQuote": true,
+  "editor.formatOnPaste": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSaveMode": "file",
+  "editor.formatOnType": true,
+  "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+  "editor.formatOnSave": true
+}
