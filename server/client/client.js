@@ -24,6 +24,8 @@ const gameTimer = document.getElementById("gameTimer");
 const myHscore = document.getElementById("hScoreAudio");
 const btns = document.querySelectorAll(".btns");
 const submitHscore = document.getElementById("submitHscore");
+const leaderModal = document.getElementById("leaderBoardModal");
+const hscoreTable = document.getElementById("hscoreTable");
 const userName = document.getElementById("userName");
 var myModalBody = document.getElementById("notify");
 var myModal = document.getElementById("exampleModal");
@@ -56,51 +58,6 @@ function addHighScore(myuserTimer, myHscore) {
 // default value if no timer is selected
 var userTimer = parseInt(localStorage.getItem("userTimer"));
 
-// setting userDefined Timer
-thirty.addEventListener("click", () => {
-  
-  userTimer = 30;
-  localStorage.setItem("userTimer", 30);
-  myModal.classList.remove("modal-backdrop");
-  myModal.style.display = "block !important";
-  var msg = `Timer changed to ${userTimer} Seconds Press start to play! `;
-  myModalBody.innerHTML = msg;
-  highScore.innerHTML = localStorage.getItem("highscore30");
-  let myHscore = localStorage.getItem("highscore30");
-  addHighScore(userTimer, myHscore);
-  gameTimer.innerHTML = userTimer;
-  showTimer.innerHTML = `${userTimer}  seconds`;
-});
-
-sixty.addEventListener("click", () => {
-  userTimer = 60;
-  localStorage.setItem("userTimer", 60);
-  myModal.classList.remove("modal-backdrop");
-  myModal.style.display = "block !important";
-  var msg = `Timer changed to ${userTimer} Seconds Press start to play! `;
-  myModalBody.innerHTML = msg;
-  playSixty();
-  highScore.innerHTML = localStorage.getItem("highscore60");
-  let myHscore = localStorage.getItem("highscore60");
-  addHighScore(userTimer, myHscore);
-  gameTimer.innerHTML = userTimer;
-  showTimer.innerHTML = `${userTimer}  seconds`;
-});
-
-ninety.addEventListener("click", () => {
-  userTimer = 90;
-  localStorage.setItem("userTimer", 90);
-  myModal.classList.remove("modal-backdrop");
-  myModal.style.display = "block !important";
-  var msg = `Timer changed to ${userTimer} Seconds Press start to play! `;
-  myModalBody.innerHTML = msg;
-  highScore.innerHTML = localStorage.getItem("highscore90");
-  let myHscore = localStorage.getItem("highscore90");
-  addHighScore(userTimer, myHscore);
-  gameTimer.innerHTML = userTimer;
-  showTimer.innerHTML = `${userTimer}  seconds`;
-});
-
 // adding eventListener to the submit buttons on Highscore
 btns.forEach((button) => {
   button.addEventListener("click", () => {
@@ -129,6 +86,62 @@ btns.forEach((button) => {
         break;
     }
   });
+});
+
+// userTimer
+thirty.addEventListener("click", () => {
+  userTimer = 30;
+  localStorage.setItem("userTimer", 30);
+  myModal.classList.remove("modal-backdrop");
+  myModal.style.display = "block !important";
+  var msg = `Timer changed to ${userTimer} Seconds Press start to play! `;
+  myModalBody.innerHTML = msg;
+  highScore.innerHTML = localStorage.getItem("highscore30");
+  let myHscore = localStorage.getItem("highscore30");
+  addHighScore(userTimer, myHscore);
+  gameTimer.innerHTML = userTimer;
+  showTimer.innerHTML = `${userTimer}  seconds`;
+  hscoreTable.classList.add("fade-in");
+  setTimeout(() => {
+    hscoreTable.classList.remove("fade-in");
+  }, 2500);
+});
+
+sixty.addEventListener("click", () => {
+  userTimer = 60;
+  localStorage.setItem("userTimer", 60);
+  myModal.classList.remove("modal-backdrop");
+  myModal.style.display = "block !important";
+  var msg = `Timer changed to ${userTimer} Seconds Press start to play! `;
+  myModalBody.innerHTML = msg;
+  playSixty();
+  highScore.innerHTML = localStorage.getItem("highscore60");
+  let myHscore = localStorage.getItem("highscore60");
+  addHighScore(userTimer, myHscore);
+  gameTimer.innerHTML = userTimer;
+  showTimer.innerHTML = `${userTimer}  seconds`;
+  hscoreTable.classList.add("fade-in");
+  setTimeout(() => {
+    hscoreTable.classList.remove("fade-in");
+  }, 1500);
+});
+
+ninety.addEventListener("click", () => {
+  userTimer = 90;
+  localStorage.setItem("userTimer", 90);
+  myModal.classList.remove("modal-backdrop");
+  myModal.style.display = "block !important";
+  var msg = `Timer changed to ${userTimer} Seconds Press start to play! `;
+  myModalBody.innerHTML = msg;
+  highScore.innerHTML = localStorage.getItem("highscore90");
+  let myHscore = localStorage.getItem("highscore90");
+  addHighScore(userTimer, myHscore);
+  gameTimer.innerHTML = userTimer;
+  showTimer.innerHTML = `${userTimer}  seconds`;
+  hscoreTable.classList.add("fade-in");
+  setTimeout(() => {
+    hscoreTable.classList.remove("fade-in");
+  }, 2500);
 });
 
 // on HighScore submit
@@ -176,10 +189,12 @@ submitHscore.addEventListener("click", () => {
 
 // setting initial highscore localstorage values on browser load
 window.addEventListener("DOMContentLoaded", () => {
+  // setting userDefined Timer
+
   highScore.innerHTML = hScore;
-  // updating the leaderboards 
+  // updating the leaderboards
   updateLeaderboards();
-  
+
   // for 30 second mode
   if (!localStorage.getItem("highscore30")) {
     localStorage.setItem("highscore30", hScore);
@@ -310,6 +325,7 @@ ws.addEventListener("message", ({ data }) => {
 
   // start button is pressed
   if (data.includes("s")) {
+    leaderModal.classList.add("fade-out");
     gameStarted = false;
     score = 0;
     pauseAllAudio();
@@ -342,6 +358,11 @@ ws.addEventListener("message", ({ data }) => {
       gameStarted = true;
       startTimer(userTimer);
     }, 3000);
+  }
+
+  if (gameEnded === "Game Over!") {
+    leaderModal.classList.remove("fade-out");
+    leaderModal.classList.add("showLeader");
   }
 
   //  if the game ends with a new highscore

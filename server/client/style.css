@@ -186,3 +186,49 @@ tr {
 .ninety {
   margin: 6%;
 }
+
+/* fadeout animation  */
+
+.fade-out {
+  animation: fadeOutAnimation 1s ease forwards;
+}
+
+@keyframes fadeOutAnimation {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-in {
+  animation: fadeInAnimation 1.5s ease forwards;
+  -webkit-animation: fadeInAnimation 1.5s ease forwards;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.showLeader {
+  opacity: 1;
+}
+.no-user-input {
+  pointer-events: none;
+}
+
+.user-input {
+  pointer-events: auto;
+  /* display: block; */
+}
+.leadermod {
+  display: none;
+}
