@@ -30,18 +30,30 @@
     <audio src="/assets//audio/scoreBall.mp3" id="score"></audio>
     <audio src="/assets//audio/hScore.wav" id="hScoreAudio"></audio>
 
-    <div class="container title"><h2 class="gameTitle">  Arcade BasketBall Game</h2></div>
+    <div class="container title">
+      <img class="ball" src="../../assets/images/ball.png" alt="ball.png">
+      <span class="gameTitle">  Arcade BasketBall Game</span></div>
 
     <div class="container-fluid gameContainer">
       <div class="container score display neon-border1">
         <h1 class="header">Score</h1>
         <hr />
         <div class="scoreContainer">
-          <p id="one" style="color: rgb(71, 232, 238)">Score:</p>
+          <p id="one" style="color: rgb(252, 255, 255)">Score:</p>
          
         </div>
          <div class="press2play container">
             <h3 id="press2Start"> </h3>
+          </div>
+       
+          <div class="rules">
+               <div class="line col-lg-12"></div>
+             <button
+                id="gameRules"
+                class="btn leader btn-primary"
+              >
+                Rules
+              </button>
           </div>
       </div>
 
@@ -50,7 +62,7 @@
           <div class="row">
             <div class="timer"><span class="span" id="gameTimer"></span></div>
             <div class="col-lg-12">
-              <h4 class="timerHeader">Change Timer</h4>
+              <h4 class="timerHeader">Timer Modes</h4>
             </div>
             <hr />
             <div class="col-lg-12 btnContainer">
@@ -102,12 +114,14 @@
         <div class="hscoreContainer">
           <p id="hScore" style="color: rgb(237, 228, 95)"></p>
         </div>
-
+         
         <!-- high score display -->
         <div class="container currentHscore">
-          <hr />
+        
           <h3 style="text-align: center">Current HighScore</h3>
+             <hr />
           <div class="tableContainer">
+            
             <table id="hscoreTable">
               <tr>
                 <th id="hscoreName">Name</th>
@@ -168,11 +182,12 @@
               aria-label="Close"
             ></button>
           </div>
+      
           <div class="modal-body leaderBody">
             <div class="container thirty">
               <h5 style="text-align: center">Time Mode: 30 Seconds</h5>
               <hr />
-              <table>
+              <table class="fade-in">
                 <tr>
                   <th>Name</th>
                   <th>Department</th>
@@ -188,7 +203,7 @@
             <div class="container sixty">
               <h5 style="text-align: center">Time Mode: 60 Seconds</h5>
               <hr />
-              <table>
+              <table class="fade-in">
                 <tr>
                   <th>Name</th>
                   <th>Department</th>
@@ -202,9 +217,9 @@
               </table>
             </div>
             <div class="container ninety">
-              <h5 style="text-align: center">Time Mode: 90 Seconds</h5>
+              <h5 style="text-align: center" >Time Mode: 90 Seconds</h5>
               <hr />
-              <table>
+              <table class="fade-in">
                 <tr>
                   <th>Name</th>
                   <th>Department</th>
@@ -223,7 +238,7 @@
     </div>
 
     <!-- tutorial -->
-    <div class="container tutorial fade-out">
+    <div class="container tutorial">
         <div class="tutorialHead">
           <h2> Things to know </h2>
         </div>  

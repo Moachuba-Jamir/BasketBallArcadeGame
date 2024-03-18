@@ -34,7 +34,8 @@ const myScoreStyle = document.querySelector(".score");
 const myhScoreStyle = document.querySelector(".hScore");
 const press2Start = document.getElementById("press2Start");
 const myLeader = document.getElementById("myleader");
-const tutorial = document.querySelector('.tutorial');
+const tutorial = document.querySelector(".tutorial");
+const tutorial1 = document.getElementById("gameRules");
 var score = 0;
 var hScore = 0;
 p.innerHTML = score;
@@ -55,6 +56,7 @@ var user30 = [],
 var currentTime = 0;
 var msg = "Press start 2 Play!",
   msg1 = "Game Started!";
+var showRules = false;
 
 function addHighScore(myuserTimer, myHscore) {
   let myUser = JSON.parse(localStorage.getItem(`userHighScore${myuserTimer}`));
@@ -100,6 +102,7 @@ btns.forEach((button) => {
 // userTimer
 thirty.addEventListener("click", () => {
   // audio fx
+  gameStarted = false;
   audio60.pause();
   audio90.pause();
   audio30.currentTime = 0;
@@ -123,6 +126,7 @@ thirty.addEventListener("click", () => {
 });
 
 sixty.addEventListener("click", () => {
+  gameStarted = false;
   // audio fx
   audio90.pause();
   audio30.pause();
@@ -145,6 +149,8 @@ sixty.addEventListener("click", () => {
 });
 
 ninety.addEventListener("click", () => {
+  gameStarted = false;
+  //audio fx
   audio30.pause();
   audio60.pause();
   audio90.currentTime = 0;
@@ -213,10 +219,6 @@ window.addEventListener("DOMContentLoaded", () => {
   checkBtn(userTimer);
   press2Start.innerHTML = msg;
 
-  // displaying rules to user 
-  tutorial.classList.add('fade-in');
-  tutorial.style.display = 'block';
-
   // setting userDefined Timer
 
   highScore.innerHTML = hScore;
@@ -277,10 +279,21 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-window.addEventListener('click', () => {
-  
-  tutorial.classList.add("fade-out");
-  tutorial.style.display = "none";
+// adding event listener rules
+tutorial1.addEventListener("click", () => {
+  tutorial.classList.add("fade-in");
+  tutorial.style.display = "block";
+  console.log("hello this is the rules ");
+  setTimeout(() => {
+    showRules = true;
+  }, 10);
+});
+
+window.addEventListener("click", () => {
+  if (showRules === true) {
+    tutorial.style.display = "none";
+    showRules = false;
+  }
 });
 
 ws.addEventListener("open", () => {
@@ -355,7 +368,7 @@ ws.addEventListener("message", ({ data }) => {
 
   // start button is pressed
   if (data.includes("s")) {
-    tutorial.style.display = 'none';
+    tutorial.style.display = "none";
     thirty.style.pointerEvents = "none";
     sixty.style.pointerEvents = "none";
     ninety.style.pointerEvents = "none";
@@ -403,7 +416,7 @@ ws.addEventListener("message", ({ data }) => {
     sixty.style.pointerEvents = "auto";
     ninety.style.pointerEvents = "auto";
     myLeader.style.pointerEvents = "auto";
-    leaderModal.classList.remove('fade-out');
+    leaderModal.classList.remove("fade-out");
     gameOver = true;
     press2Start.innerHTML = "Press start 2 play Again!!";
     // myLeader.style.pointerEvents = 'auto';
