@@ -22,24 +22,33 @@
     <audio src="/assets//audio/lets go.mp3" id="start"></audio>
     <audio src="/assets//audio/ping1.mp3" id="timer"></audio>
     <audio src="/assets//audio/gameover.wav" id="buzzer"></audio>
-    <audio src="/assets//audio/sixty.mp3" id="sixtyVoice"></audio>
+    <audio src="/assets//audio/30seconds.mp3" id="audio30"></audio>
+    <audio src="/assets//audio/60seconds.mp3" id="audio60"></audio>
+    <audio src="/assets//audio/90seconds.mp3" id="audio90"></audio>
+
     <audio src="/assets//audio/tickme.wav" id="tick"></audio>
     <audio src="/assets//audio/scoreBall.mp3" id="score"></audio>
     <audio src="/assets//audio/hScore.wav" id="hScoreAudio"></audio>
 
-    idv
+    <div class="container title"><h2 class="gameTitle">  Arcade BasketBall Game</h2></div>
 
-    <div class="container title"><h2>BasketBall Game</h2></div>
     <div class="container-fluid gameContainer">
-      <div class="container score display">
-        <h1>Score</h1>
-        <p id="one" style="color: rgb(71, 232, 238)">Score:</p>
+      <div class="container score display neon-border1">
+        <h1 class="header">Score</h1>
+        <hr />
+        <div class="scoreContainer">
+          <p id="one" style="color: rgb(71, 232, 238)">Score:</p>
+         
+        </div>
+         <div class="press2play container">
+            <h3 id="press2Start"> </h3>
+          </div>
       </div>
 
       <div class="container items">
-        <div class="timer"><span class="span" id="gameTimer"></span></div>
         <div class="changeTimer">
           <div class="row">
+            <div class="timer"><span class="span" id="gameTimer"></span></div>
             <div class="col-lg-12">
               <h4 class="timerHeader">Change Timer</h4>
             </div>
@@ -74,7 +83,7 @@
               </button>
               <button
                 type="button"
-                id="thirty"
+                id="myleader"
                 class="btn leader btn-primary"
                 data-bs-toggle="modal"
                 data-bs-target="#leaderBoardModal"
@@ -86,13 +95,17 @@
         </div>
       </div>
 
-      <div class="container hScore display">
-        <h1>HighScore</h1>
-        <h3>Game Timer: <span id="showTimer"></span></h3>
-        <p id="hScore" style="color: rgb(237, 228, 95)"></p>
+      <div class="container hScore display neon-border">
+        <h1 class="header">HighScore</h1>
+        <hr />
+        <h3 class="gametimer">Game Timer: <span id="showTimer"></span></h3>
+        <div class="hscoreContainer">
+          <p id="hScore" style="color: rgb(237, 228, 95)"></p>
+        </div>
 
         <!-- high score display -->
-        <div class="container">
+        <div class="container currentHscore">
+          <hr />
           <h3 style="text-align: center">Current HighScore</h3>
           <div class="tableContainer">
             <table id="hscoreTable">
@@ -134,30 +147,6 @@
       />
     </div>
 
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLabel">HEY</h3>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <h2 id="notify"></h2>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- LeaderBoard Modal -->
@@ -231,6 +220,25 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- tutorial -->
+    <div class="container tutorial fade-out">
+        <div class="tutorialHead">
+          <h2> Things to know </h2>
+        </div>  
+        <hr>
+        <div class="tutorialBody">
+          <h3>Welcome, here are some game rules to get you started!</h3>
+          <li>You get 2 points for every score.</li>
+          <li>There are 3 Game modes. <em>30 seconds  |  60 seconds  | 90 seconds.</em></li>
+          <li>Compete yourself with other players and top the leaderboards</li>
+          <li>Every time you obtain a high score, you will be prompted to enter your name and department details. This user information will be reflected on the leaderboards.</li>
+          <li>Every game mode has it's own high scores and leaders.</li>
+          <li>You can press the <strong>Start</strong> to start playing.</li>
+          <li>Make sure to have fun!</li>
+          <h4 >Press <strong>Start </strong> or Click anywhere to close</h4>
+        </div>
     </div>
 
     <script type="module" src="client.js"></script>

@@ -3,12 +3,12 @@ import {
   cD,
   countDown,
   pauseAllAudio,
-  playSixty,
   myScore,
   displayForm,
   updatescore,
   hideForm,
   updateLeaderboards,
+  checkBtn,
 } from "./functions.js";
 
 const ws = new WebSocket("ws://localhost:7070");
@@ -27,8 +27,14 @@ const submitHscore = document.getElementById("submitHscore");
 const leaderModal = document.getElementById("leaderBoardModal");
 const hscoreTable = document.getElementById("hscoreTable");
 const userName = document.getElementById("userName");
-var myModalBody = document.getElementById("notify");
-var myModal = document.getElementById("exampleModal");
+const audio30 = document.getElementById("audio30");
+const audio60 = document.getElementById("audio60");
+const audio90 = document.getElementById("audio90");
+const myScoreStyle = document.querySelector(".score");
+const myhScoreStyle = document.querySelector(".hScore");
+const press2Start = document.getElementById("press2Start");
+const myLeader = document.getElementById("myleader");
+const tutorial = document.querySelector('.tutorial');
 var score = 0;
 var hScore = 0;
 p.innerHTML = score;
@@ -46,6 +52,9 @@ var is30 = false,
 var user30 = [],
   user60 = [],
   user90 = [];
+var currentTime = 0;
+var msg = "Press start 2 Play!",
+  msg1 = "Game Started!";
 
 function addHighScore(myuserTimer, myHscore) {
   let myUser = JSON.parse(localStorage.getItem(`userHighScore${myuserTimer}`));
@@ -90,12 +99,15 @@ btns.forEach((button) => {
 
 // userTimer
 thirty.addEventListener("click", () => {
+  // audio fx
+  audio60.pause();
+  audio90.pause();
+  audio30.currentTime = 0;
+  audio30.play();
+
   userTimer = 30;
   localStorage.setItem("userTimer", 30);
-  myModal.classList.remove("modal-backdrop");
-  myModal.style.display = "block !important";
   var msg = `Timer changed to ${userTimer} Seconds Press start to play! `;
-  myModalBody.innerHTML = msg;
   highScore.innerHTML = localStorage.getItem("highscore30");
   let myHscore = localStorage.getItem("highscore30");
   addHighScore(userTimer, myHscore);
@@ -105,16 +117,20 @@ thirty.addEventListener("click", () => {
   setTimeout(() => {
     hscoreTable.classList.remove("fade-in");
   }, 2500);
+
+  // disabling the timerSelection button if timer is already selected
+  checkBtn(userTimer);
 });
 
 sixty.addEventListener("click", () => {
+  // audio fx
+  audio90.pause();
+  audio30.pause();
+  audio60.currentTime = 0;
+  audio60.play();
+
   userTimer = 60;
   localStorage.setItem("userTimer", 60);
-  myModal.classList.remove("modal-backdrop");
-  myModal.style.display = "block !important";
-  var msg = `Timer changed to ${userTimer} Seconds Press start to play! `;
-  myModalBody.innerHTML = msg;
-  playSixty();
   highScore.innerHTML = localStorage.getItem("highscore60");
   let myHscore = localStorage.getItem("highscore60");
   addHighScore(userTimer, myHscore);
@@ -124,15 +140,18 @@ sixty.addEventListener("click", () => {
   setTimeout(() => {
     hscoreTable.classList.remove("fade-in");
   }, 1500);
+  // disabling the timerSelection button if timer is already selected
+  checkBtn(userTimer);
 });
 
 ninety.addEventListener("click", () => {
+  audio30.pause();
+  audio60.pause();
+  audio90.currentTime = 0;
+  audio90.play();
+
   userTimer = 90;
   localStorage.setItem("userTimer", 90);
-  myModal.classList.remove("modal-backdrop");
-  myModal.style.display = "block !important";
-  var msg = `Timer changed to ${userTimer} Seconds Press start to play! `;
-  myModalBody.innerHTML = msg;
   highScore.innerHTML = localStorage.getItem("highscore90");
   let myHscore = localStorage.getItem("highscore90");
   addHighScore(userTimer, myHscore);
@@ -142,6 +161,8 @@ ninety.addEventListener("click", () => {
   setTimeout(() => {
     hscoreTable.classList.remove("fade-in");
   }, 2500);
+  // disabling the timerSelection button if timer is already selected
+  checkBtn(userTimer);
 });
 
 // on HighScore submit
@@ -189,6 +210,13 @@ submitHscore.addEventListener("click", () => {
 
 // setting initial highscore localstorage values on browser load
 window.addEventListener("DOMContentLoaded", () => {
+  checkBtn(userTimer);
+  press2Start.innerHTML = msg;
+
+  // displaying rules to user 
+  tutorial.classList.add('fade-in');
+  tutorial.style.display = 'block';
+
   // setting userDefined Timer
 
   highScore.innerHTML = hScore;
@@ -249,6 +277,12 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+window.addEventListener('click', () => {
+  
+  tutorial.classList.add("fade-out");
+  tutorial.style.display = "none";
+});
+
 ws.addEventListener("open", () => {
   console.log("Client has connected to the server!!");
 });
@@ -256,11 +290,9 @@ ws.addEventListener("open", () => {
 // displaying the default timer
 gameTimer.innerHTML = userTimer;
 
-if (gameEnded === "Game Over!") {
-  setTimeout(() => {
-    gameTimer.innerHTML = userTimer;
-  }, 4000);
-}
+setTimeout(() => {
+  gameTimer.innerHTML = userTimer;
+}, 4000);
 
 ws.addEventListener("message", ({ data }) => {
   //setting state for game modes
@@ -288,6 +320,10 @@ ws.addEventListener("message", ({ data }) => {
     score += 2;
     p.innerHTML = score;
     myScore();
+    myScoreStyle.classList.add("neon-ball");
+    setTimeout(() => {
+      myScoreStyle.classList.remove("neon-ball");
+    }, 800);
 
     // high score
     if (score > hScore30 && userTimer === 30) {
@@ -315,16 +351,16 @@ ws.addEventListener("message", ({ data }) => {
         myHscore.muted = true;
       }, 4000);
     }
-
-    if (gameEnded === "Game Over!") {
-      gameOver = true;
-      myModal.style.display = "block";
-      myModal.classList.remove("modal-backdrop");
-    }
   }
 
   // start button is pressed
   if (data.includes("s")) {
+    tutorial.style.display = 'none';
+    thirty.style.pointerEvents = "none";
+    sixty.style.pointerEvents = "none";
+    ninety.style.pointerEvents = "none";
+    myLeader.style.pointerEvents = "none";
+    press2Start.innerHTML = msg1;
     leaderModal.classList.add("fade-out");
     gameStarted = false;
     score = 0;
@@ -339,18 +375,19 @@ ws.addEventListener("message", ({ data }) => {
       );
     }, 1000);
     countDown();
-    myModal.style.display = "none";
-    myModal.classList.add("modal-backdrop");
-
     // Game start
     cD();
     if (gameTimer.innerHTML === "Let's GO!!") {
       var gogo = setInterval(() => {
+        gameTimer.style.fontSize = "2rem";
+        gameTimer.style.paddingBlock = "10%";
         gameTimer.innerHTML = "Let's GO !!";
         tick.pause();
       }, 100);
       setTimeout(() => {
         clearInterval(gogo);
+        gameTimer.style.paddingBlock = "4%";
+        gameTimer.style.fontSize = "4.4rem";
       }, 4000);
     }
 
@@ -360,14 +397,23 @@ ws.addEventListener("message", ({ data }) => {
     }, 3000);
   }
 
-  if (gameEnded === "Game Over!") {
-    leaderModal.classList.remove("fade-out");
-    leaderModal.classList.add("showLeader");
+  // if game is over :
+  if (gameEnded === "Game Over!" || gameEnded === userTimer) {
+    thirty.style.pointerEvents = "auto";
+    sixty.style.pointerEvents = "auto";
+    ninety.style.pointerEvents = "auto";
+    myLeader.style.pointerEvents = "auto";
+    leaderModal.classList.remove('fade-out');
+    gameOver = true;
+    press2Start.innerHTML = "Press start 2 play Again!!";
+    // myLeader.style.pointerEvents = 'auto';
+    console.log(thirty.style.pointerEvents);
   }
 
   //  if the game ends with a new highscore
   if (gameEnded === "Game Over!" && newHighscore === true) {
     // Redirect to another HTML page
+    press2Start.innerHTML = "New High Score!";
     setTimeout(() => {
       displayForm();
     }, 2000);
