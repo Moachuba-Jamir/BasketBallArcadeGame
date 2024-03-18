@@ -10,7 +10,8 @@ body {
   position: relative;
   z-index: -1000;
 }
-.gameTitle{
+.gameTitle {
+  display: inline-block;
   text-align: center;
   font-size: 3.5rem;
 }
@@ -19,13 +20,15 @@ body {
   width: 100vw;
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  margin-top: 3% !important;
 }
 .display {
   position: relative;
   height: 65%;
   width: 34%;
+  margin-top: 2%;
 }
 .title {
   text-align: center;
@@ -58,6 +61,23 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+/* ball spin */
+.ball {
+  width: 100px; /* Adjust size as needed */
+  animation: rotateBall 5s linear infinite; /* Adjust duration as needed */
+  margin-right: 2%;
+  margin-top: -5%;
+}
+
+@keyframes rotateBall {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .btn {
@@ -188,9 +208,10 @@ body {
   height: 700px !important;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  background-color: rgba(220, 222, 223, 0.61);
 }
 .tableContainer {
   display: flex;
@@ -208,16 +229,48 @@ body {
   color: white;
 }
 
+.leaderBody h5 {
+  font-size: 1.2rem;
+  height: 30px;
+  width: 100%;
+  background-color: rgba(153, 5, 66, 0.281);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
 table {
   width: 100%;
   border-collapse: collapse !important;
   color: white;
 }
+.rules {
+  display: flex;
+  height: inherit;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+}
+.line {
+  width: 100%;
+  height: 1px;
+  margin-top: 40%;
+  margin-bottom: -7%;
+  background-color: #2b2a2a;
+  opacity: 0.3 !important;
+}
+
+
+#gameRules {
+  height: 40px;
+  width: 120px;
+}
 
 tr,
 th {
   text-align: center;
-  margin-inline: 15%;
+  margin-inline: 15% !important;
 }
 
 tr {
@@ -226,6 +279,8 @@ tr {
 }
 td {
   text-align: center;
+  color: rgb(150, 3, 71);
+  font-weight: bold;
 }
 .currentHscore {
   display: flex;
@@ -241,12 +296,13 @@ tr {
   color: black !important;
 }
 .thirty {
-  margin-top: -2% !important;
-  margin-bottom: 5%;
+  margin-top: 15%;
+  margin-bottom: 10%;
+  text-align: center;
 }
 .sixty,
 .ninety {
-  margin: 6%;
+  margin-bottom: 10%;
 }
 
 .hscoreContainer {
@@ -390,22 +446,24 @@ tr {
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
 }
-.tutorialHead, h3{
+.tutorialHead,
+h3 {
   text-align: center;
 }
-.tutorial li{
+.tutorial li {
   padding: 1.5%;
   text-align: left;
   font-size: 1.1em;
   font-style: italic;
 }
-.tutorial h4{
+.tutorial h4 {
   text-align: center;
   padding-top: 4%;
   color: rgb(95, 1, 104);
 }
 
-strong, em{
+strong,
+em {
   color: rgb(233, 153, 6);
   font-weight: bold;
 }

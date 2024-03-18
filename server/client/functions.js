@@ -29,7 +29,7 @@ var table90Score = document.getElementById("90score");
 const thirty = document.getElementById("thirty");
 const sixty = document.getElementById("sixty");
 const ninety = document.getElementById("ninety");
-
+const myLeader = document.getElementById("myleader");
 
 
 // game functions
@@ -158,7 +158,7 @@ export function checkBtn(myUserTimer) {
         thirty.style.pointerEvents = "none";
         sixty.style.pointerEvents = "auto";
         ninety.style.pointerEvents = "auto";
-        thirty.style.backgroundColor = "rgba(0, 126, 88, 0.8)";
+        thirty.style.backgroundColor = "rgba(2, 181, 187, 0.9)";
         ninety.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
         sixty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
         break;
@@ -169,14 +169,14 @@ export function checkBtn(myUserTimer) {
         ninety.style.pointerEvents = "auto";
         thirty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
         ninety.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
-        sixty.style.backgroundColor = "rgba(0, 126, 88, 0.8)";
+        sixty.style.backgroundColor = "rgba(2, 181, 187, 0.9)";
         break;
 
       case 90:
         thirty.style.pointerEvents = "auto";
         sixty.style.pointerEvents = "auto";
         ninety.style.pointerEvents = "none";
-        ninety.style.backgroundColor = "rgba(0, 126, 88, 0.8)";
+        ninety.style.backgroundColor = "rgba(2, 181, 187, 0.9)";
         thirty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
         sixty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
         break;
