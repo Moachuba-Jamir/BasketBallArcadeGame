@@ -26,6 +26,11 @@ var table90Name = document.getElementById("90Name");
 var table90Dept = document.getElementById("90dept");
 var table90Score = document.getElementById("90score");
 
+const thirty = document.getElementById("thirty");
+const sixty = document.getElementById("sixty");
+const ninety = document.getElementById("ninety");
+
+
 
 // game functions
 export function startTimer(userTimer) {
@@ -44,6 +49,8 @@ export function startTimer(userTimer) {
       }
     } else if (timer < 0) {
       clearInterval(intervalId);
+      gameTimer.style.fontSize = "2rem";
+      gameTimer.style.paddingBlock = "10%";
       gameTimer.innerHTML = "Game Over!";
       pauseAllAudio();
       buzzer.play();
@@ -88,10 +95,6 @@ export function pauseAllAudio() {
   buzzer.currentTime = 0;
   tick.pause();
   tick.currentTime = 0;
-}
-
-export function playSixty() {
-  sixtyVoice.play();
 }
 
 export function myScore() {
@@ -147,4 +150,38 @@ export function updateLeaderboards() {
      table90Dept.innerHTML = "-----";
      table90Score.innerHTML = "-----";
  }
+}
+
+export function checkBtn(myUserTimer) {
+    switch (myUserTimer) {
+      case 30:
+        thirty.style.pointerEvents = "none";
+        sixty.style.pointerEvents = "auto";
+        ninety.style.pointerEvents = "auto";
+        thirty.style.backgroundColor = "rgba(0, 126, 88, 0.8)";
+        ninety.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
+        sixty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
+        break;
+
+      case 60:
+        thirty.style.pointerEvents = "auto";
+        sixty.style.pointerEvents = "none";
+        ninety.style.pointerEvents = "auto";
+        thirty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
+        ninety.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
+        sixty.style.backgroundColor = "rgba(0, 126, 88, 0.8)";
+        break;
+
+      case 90:
+        thirty.style.pointerEvents = "auto";
+        sixty.style.pointerEvents = "auto";
+        ninety.style.pointerEvents = "none";
+        ninety.style.backgroundColor = "rgba(0, 126, 88, 0.8)";
+        thirty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
+        sixty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
+        break;
+
+      default:
+        console.log("timer button error handling: something went wrong! ");
+    }
 }
