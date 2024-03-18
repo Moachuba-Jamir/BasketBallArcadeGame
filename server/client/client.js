@@ -36,6 +36,7 @@ const press2Start = document.getElementById("press2Start");
 const myLeader = document.getElementById("myleader");
 const tutorial = document.querySelector(".tutorial");
 const tutorial1 = document.getElementById("gameRules");
+const formContainer = document.getElementById("formContainer");
 var score = 0;
 var hScore = 0;
 p.innerHTML = score;
@@ -43,9 +44,9 @@ var gameStarted = false;
 var gameEnded;
 var newHighscore = false;
 var gameOver = false;
-var hScore30 = localStorage.getItem("highscore30");
-var hScore60 = localStorage.getItem("highscore60");
-var hScore90 = localStorage.getItem("highscore90");
+// var hScore30 = localStorage.getItem("highscore30");
+// var hScore60 = localStorage.getItem("highscore60");
+// var hScore90 = localStorage.getItem("highscore90");
 var dept;
 var is30 = false,
   is60 = false,
@@ -53,10 +54,11 @@ var is30 = false,
 var user30 = [],
   user60 = [],
   user90 = [];
-var currentTime = 0;
+
 var msg = "Press start 2 Play!",
   msg1 = "Game Started!";
 var showRules = false;
+var isSubmit = false;
 
 function addHighScore(myuserTimer, myHscore) {
   let myUser = JSON.parse(localStorage.getItem(`userHighScore${myuserTimer}`));
@@ -175,41 +177,37 @@ ninety.addEventListener("click", () => {
 // pending error handling
 submitHscore.addEventListener("click", () => {
   let name = userName.value;
-  if (dept != "" && name != "") {
-    // we store the values in the local storage
-    if (is30 === true) {
-      let userNewScore = localStorage.getItem("highscore30");
-      updatescore(name, dept, userNewScore);
-      user30.push(name, dept);
-      console.log(`from submit:  ${user30}`);
-      localStorage.setItem("userHighScore30", JSON.stringify(user30));
-    } else if (is60 === true) {
-      let userNewScore = localStorage.getItem("highscore60");
-      console.log(`from 60 : ${is30} : ${is60}`);
-      console.log(hScore60);
-      updatescore(name, dept, userNewScore);
-      user60.push(name, dept);
-      console.log(`from submit:  ${user60}`);
-      localStorage.setItem("userHighScore60", JSON.stringify(user60));
-    } else if (is90 === true) {
-      let userNewScore = localStorage.getItem("highscore90");
-      updatescore(name, dept, userNewScore);
-      user90.push(name, dept);
-      console.log(`from submit:  ${user90}`);
-      localStorage.setItem("userHighScore90", JSON.stringify(user90));
-    } else {
-      console.warn(
-        "error could not retrieve the highscore from an game modes!"
-      );
-    }
+  // we store the values in the local storage
+  if (is30 === true) {
+    let userNewScore = localStorage.getItem("highscore30");
+    updatescore(name, dept, userNewScore);
+    user30 = [];
+    user30.push(name, dept);
+    console.log(`from submit:  ${user30}`);
+    localStorage.setItem("userHighScore30", JSON.stringify(user30));
+  } else if (is60 === true) {
+    let userNewScore = localStorage.getItem("highscore60");
+    console.log(`from 60 : ${is30} : ${is60}`);
+    updatescore(name, dept, userNewScore);
+    user30 = [];
+    user60.push(name, dept);
+    console.log(`from submit:  ${user60}`);
+    localStorage.setItem("userHighScore60", JSON.stringify(user60));
+  } else if (is90 === true) {
+    let userNewScore = localStorage.getItem("highscore90");
+    updatescore(name, dept, userNewScore);
+    user30 = [];
+    user90.push(name, dept);
+    console.log(`from submit:  ${user90}`);
+    localStorage.setItem("userHighScore90", JSON.stringify(user90));
   } else {
-    console.log("Enter both your name and department!");
+    console.warn("error could not retrieve the highscore from an game modes!");
   }
-  setTimeout(() => {
-    hideForm();
-  }, 2000);
-  displayForm();
+  hideForm();
+  isSubmit = true;
+  newHighscore = false;
 
+  // displayForm();
   // update the leaderboards
   updateLeaderboards();
 });
@@ -221,7 +219,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // setting userDefined Timer
 
-  highScore.innerHTML = hScore;
+  if (is30 === true) {
+    highScore.innerHTML = localStorage.getItem("highscore30");
+  } else if (is60 === true) {
+    highScore.innerHTML = localStorage.getItem("highscore60");
+  } else {
+    highScore.innerHTML = localStorage.getItem("highscore90");
+  }
+
   // updating the leaderboards
   updateLeaderboards();
 
@@ -308,6 +313,16 @@ setTimeout(() => {
 }, 4000);
 
 ws.addEventListener("message", ({ data }) => {
+  var hScore30 = localStorage.getItem("highscore30");
+  var hScore60 = localStorage.getItem("highscore60");
+  var hScore90 = localStorage.getItem("highscore90");
+  if (userTimer === 30) {
+    highScore.innerHTML = localStorage.getItem("highscore30");
+  } else if (userTimer === 60) {
+    highScore.innerHTML = localStorage.getItem("highscore60");
+  } else {
+    highScore.innerHTML = localStorage.getItem("highscore90");
+  }
   //setting state for game modes
   switch (userTimer) {
     case 30:
@@ -345,29 +360,34 @@ ws.addEventListener("message", ({ data }) => {
       highScore.innerHTML = score;
       myHscore.play();
       setTimeout(() => {
-        myHscore.muted = true;
-      }, 4000);
+        myHscore.pause();
+        myHscore.currentTime = 0
+      }, 2000);
     } else if (score > hScore60 && userTimer === 60) {
       newHighscore = true;
       localStorage.setItem("highscore60", score);
       highScore.innerHTML = score;
       myHscore.play();
       setTimeout(() => {
-        myHscore.muted = true;
-      }, 4000);
+        myHscore.pause();
+        myHscore.currentTime = 0
+      }, 2000);
     } else if (score > hScore90 && userTimer === 90) {
       newHighscore = true;
       localStorage.setItem("highscore90", score);
       highScore.innerHTML = score;
       myHscore.play();
       setTimeout(() => {
-        myHscore.muted = true;
-      }, 4000);
+        myHscore.pause();
+        myHscore.currentTime = 0
+      }, 2000);
     }
   }
 
   // start button is pressed
   if (data.includes("s")) {
+    newHighscore = false;
+    isSubmit = false;
     tutorial.style.display = "none";
     thirty.style.pointerEvents = "none";
     sixty.style.pointerEvents = "none";
@@ -425,11 +445,21 @@ ws.addEventListener("message", ({ data }) => {
 
   //  if the game ends with a new highscore
   if (gameEnded === "Game Over!" && newHighscore === true) {
-    // Redirect to another HTML page
     press2Start.innerHTML = "New High Score!";
-    setTimeout(() => {
-      displayForm();
-    }, 2000);
+  }
+
+  if (
+    gameEnded === "Game Over!" &&
+    newHighscore === true &&
+    isSubmit === true
+  ) {
+    hideForm();
+  } else if (
+    gameEnded === "Game Over!" &&
+    newHighscore === true &&
+    isSubmit === false
+  ) {
+    displayForm();
   }
 });
 

@@ -52,7 +52,7 @@
                 id="gameRules"
                 class="btn leader btn-primary"
               >
-                Rules
+                Tutorial
               </button>
           </div>
       </div>
@@ -129,9 +129,9 @@
                 <th id="hscoreScore">Score</th>
               </tr>
               <tr>
-                <td id="name"></td>
-                <td id="dept"></td>
-                <td id="currentHscore"></td>
+                <td id="name" style="color:rgb(255, 238, 4);"></td>
+                <td id="dept" style="color:rgb(255, 238, 4);"></td>
+                <td id="currentHscore" style="color:rgb(255, 238, 4);"></td>
               </tr>
             </table>
           </div>
@@ -140,25 +140,40 @@
     </div>
 
     <!-- submit form -->
-    <div class="container-fluid" id="formContainer">
-      <input
+    <div class="container myFormcontainer" id="formContainer">
+      <div class="highHeader">
+        <h3>Congrats on your new High score </h3>
+      </div>
+      <br><hr>
+      <div class="myform">
+     <div class="myInput">
+            <input
         id="userName"
         class="nameInput"
         type="text"
         placeholder="Enter your name"
       />
-      <button class="btns bca">BCA</button>
+     </div>
+     <h3 class="myDept">Select your department</h3>
+     <div class="myBtnContainer">
+       <button class="btns bca">BCA</button>
       <button class="btns mca">MCA</button>
       <button class="btns ba">BA</button>
       <button class="btns bcom">B.COM</button>
       <button class="btns mba">MBA</button>
       <button class="btns ma">MA</button>
+      
+     </div>
+
+     <div class="submitContainer">
       <input
         class="submitInput"
         type="submit"
         value="submit"
         id="submitHscore"
       />
+     </div>
+      </div>
     </div>
 
     </div>
@@ -244,20 +259,21 @@
         </div>  
         <hr>
         <div class="tutorialBody">
-          <h3>Welcome, here are some game rules to get you started!</h3>
+          <h3>Welcome, here are some things to get you started!</h3>
           <li>You get 2 points for every score.</li>
           <li>There are 3 Game modes. <em>30 seconds  |  60 seconds  | 90 seconds.</em></li>
-          <li>Compete yourself with other players and top the leaderboards</li>
-          <li>Every time you obtain a high score, you will be prompted to enter your name and department details. This user information will be reflected on the leaderboards.</li>
+          <li>Compete with other players and students to be the top high scorer!!</li>
+          <li>You can submit your high scores to the leaderboard.</li>
           <li>Every game mode has it's own high scores and leaders.</li>
-          <li>You can press the <strong>Start</strong> to start playing.</li>
-          <li>Make sure to have fun!</li>
-          <h4 >Press <strong>Start </strong> or Click anywhere to close</h4>
+          <li>Players cannot change game modes while the game in underway.</li>
+          <li>Press the <strong>Start button</strong> to start the game.</li>
+          <li> Have fun!</li>
+          <h4 >Press the <strong>Start button </strong> to play or Click anywhere to close</h4>
         </div>
     </div>
 
-    <script type="module" src="client.js"></script>
-    <script type="module" src="functions.js"></script>
+    <script type="module" src="./client.js"></script>
+    <script type="module" src="./functions.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- console styling -->
