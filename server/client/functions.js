@@ -31,7 +31,6 @@ const sixty = document.getElementById("sixty");
 const ninety = document.getElementById("ninety");
 const myLeader = document.getElementById("myleader");
 
-
 // game functions
 export function startTimer(userTimer) {
   if (intervalId) clearInterval(intervalId);
@@ -40,7 +39,7 @@ export function startTimer(userTimer) {
     timer -= 1;
     if (timer >= 0) {
       gameTimer.innerHTML = timer;
-      if (timer >= 11) {
+      if (timer >= 10) {
         tick.play();
         playTimer.pause();
       } else {
@@ -65,7 +64,6 @@ export function startTimer(userTimer) {
 }
 
 export function updatescore(userName, userDept, score) {
-
   if (userName === 0 && userDept === 0) {
     name.innerHTML = "------";
     dept.innerHTML = "------";
@@ -102,33 +100,33 @@ export function myScore() {
 }
 
 export function displayForm() {
-  formContainer.style.display = "flex";
-  formContainer.style.alignItems = "center";
-  formContainer.style.justifyContent = "center";
+  document.querySelector(".myFormcontainer").style.display = "block";
+  document.querySelector(".nameInput").focus();
+  console.warn("show form is being called");
 }
 
 export function hideForm() {
-  formContainer.style.display = "none";
-  formContainer.style.visibility = "hidden";
+  document.querySelector(".myFormcontainer").style.display = "none";
+  console.warn("hide form is called");
 }
 
 export function updateLeaderboards() {
-  var for30 = localStorage.getItem('highscore30');
-  var for60 = localStorage.getItem('highscore60');
-  var for90 = localStorage.getItem('highscore90');
+  var for30 = localStorage.getItem("highscore30");
+  var for60 = localStorage.getItem("highscore60");
+  var for90 = localStorage.getItem("highscore90");
 
-  var user30 = JSON.parse(localStorage.getItem('userHighScore30'));
+  var user30 = JSON.parse(localStorage.getItem("userHighScore30"));
   var user60 = JSON.parse(localStorage.getItem("userHighScore60"));
   var user90 = JSON.parse(localStorage.getItem("userHighScore90"));
 
   if (user30 != 0) {
-      table30Name.innerHTML = user30[0];
-      table30Dept.innerHTML = user30[1];
-      table30Score.innerHTML = for30;
+    table30Name.innerHTML = user30[0];
+    table30Dept.innerHTML = user30[1];
+    table30Score.innerHTML = for30;
   } else {
-      table30Name.innerHTML = '-----';
-      table30Dept.innerHTML = '-----';
-      table30Score.innerHTML = '-----';
+    table30Name.innerHTML = "-----";
+    table30Dept.innerHTML = "-----";
+    table30Score.innerHTML = "-----";
   }
 
   if (user60 != 0) {
@@ -136,52 +134,52 @@ export function updateLeaderboards() {
     table60Dept.innerHTML = user60[1];
     table60Score.innerHTML = for60;
   } else {
-      table60Name.innerHTML = "-----";
-      table60Dept.innerHTML = "-----";
-      table60Score.innerHTML = "-----";
-}
+    table60Name.innerHTML = "-----";
+    table60Dept.innerHTML = "-----";
+    table60Score.innerHTML = "-----";
+  }
 
   if (user90 != 0) {
     table90Name.innerHTML = user90[0];
     table90Dept.innerHTML = user90[1];
     table90Score.innerHTML = for90;
   } else {
-     table90Name.innerHTML = "-----";
-     table90Dept.innerHTML = "-----";
-     table90Score.innerHTML = "-----";
- }
+    table90Name.innerHTML = "-----";
+    table90Dept.innerHTML = "-----";
+    table90Score.innerHTML = "-----";
+  }
 }
 
 export function checkBtn(myUserTimer) {
-    switch (myUserTimer) {
-      case 30:
-        thirty.style.pointerEvents = "none";
-        sixty.style.pointerEvents = "auto";
-        ninety.style.pointerEvents = "auto";
-        thirty.style.backgroundColor = "rgba(2, 181, 187, 0.9)";
-        ninety.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
-        sixty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
-        break;
+  switch (myUserTimer) {
+    case 30:
+      thirty.style.pointerEvents = "none";
+      sixty.style.pointerEvents = "auto";
+      ninety.style.pointerEvents = "auto";
+      thirty.style.backgroundColor = "rgba(2, 181, 187, 0.9)";
+      ninety.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
+      sixty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
+      break;
 
-      case 60:
-        thirty.style.pointerEvents = "auto";
-        sixty.style.pointerEvents = "none";
-        ninety.style.pointerEvents = "auto";
-        thirty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
-        ninety.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
-        sixty.style.backgroundColor = "rgba(2, 181, 187, 0.9)";
-        break;
+    case 60:
+      thirty.style.pointerEvents = "auto";
+      sixty.style.pointerEvents = "none";
+      ninety.style.pointerEvents = "auto";
+      thirty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
+      ninety.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
+      sixty.style.backgroundColor = "rgba(2, 181, 187, 0.9)";
+      break;
 
-      case 90:
-        thirty.style.pointerEvents = "auto";
-        sixty.style.pointerEvents = "auto";
-        ninety.style.pointerEvents = "none";
-        ninety.style.backgroundColor = "rgba(2, 181, 187, 0.9)";
-        thirty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
-        sixty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
-        break;
+    case 90:
+      thirty.style.pointerEvents = "auto";
+      sixty.style.pointerEvents = "auto";
+      ninety.style.pointerEvents = "none";
+      ninety.style.backgroundColor = "rgba(2, 181, 187, 0.9)";
+      thirty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
+      sixty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
+      break;
 
-      default:
-        console.log("timer button error handling: something went wrong! ");
-    }
+    default:
+      console.log("timer button error handling: something went wrong! ");
+  }
 }
