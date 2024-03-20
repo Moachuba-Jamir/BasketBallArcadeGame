@@ -207,7 +207,7 @@ submitHscore.addEventListener("click", () => {
         isSubmit = true;
         newHighscore = false;
     } else {
-      alert('kindly enter your name and dept');
+      alert('Kindly enter both your name and department....');
     }
     user30 = [];
     user30.push(name, dept);
