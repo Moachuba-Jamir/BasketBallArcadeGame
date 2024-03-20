@@ -260,15 +260,16 @@ body {
   transform: translate(-50%, -50%);
   height: 60vh;
   width: 50vw;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-  background-image: url("../../assets/images/hs1.jpg");
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  background-color: rgba(1, 5, 49, 0.938);
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.9;
+  border-inline: 6px dashed rgb(214, 119, 3);
 }
 
 .highHeader {
@@ -280,6 +281,7 @@ body {
   color: white;
   padding-top: 4%;
   font-family: fre;
+  text-align: center;
 }
 
 .myBtnContainer {
@@ -297,17 +299,17 @@ body {
   border-top: none;
   height: 60px;
   width: 120px;
-  transition: all 300ms ease-in;
-  background-color: rgba(1, 117, 73, 0.253);
+  transition: all 200ms ease-in;
+  background-color: rgba(241, 241, 236, 0.359);
   border-radius: 15px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
-  -webkit-transition: all 300ms ease-in;
-  -moz-transition: all 300ms ease-in;
-  -ms-transition: all 300ms ease-in;
-  -o-transition: all 300ms ease-in;
+  -webkit-transition: all 200ms ease-in;
+  -moz-transition: all 200ms ease-in;
+  -ms-transition: all 200ms ease-in;
+  -o-transition: all 200ms ease-in;
   font-family: revolution;
   font-size: 1.5rem;
 }
@@ -317,6 +319,8 @@ body {
   -moz-transform: scale(1.1);
   -ms-transform: scale(1.1);
   -o-transform: scale(1.1);
+  color: orange;
+  border-bottom: 5px solid orange;
 }
 
 .submitContainer {
@@ -328,11 +332,11 @@ body {
   height: 50px;
   width: 140px;
   margin-top: 2%;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
   font-size: 1.8rem;
   transition: all 300ms ease-in-out;
   -webkit-transition: all 300ms ease-in-out;
@@ -340,19 +344,24 @@ body {
   -ms-transition: all 300ms ease-in-out;
   -o-transition: all 300ms ease-in-out;
   border: none;
-  background-color: rgba(146, 4, 82, 0.397);
+  background-color: rgba(255, 123, 0, 0.87);
   color: white;
-  box-shadow: 0px 5px 15px 10px white;
+  box-shadow: 0px 5px 15px 10px rgb(210, 208, 207);
   font-family: revolution;
   font-size: 1.5rem;
 }
 .submitInput:hover {
   border-radius: 40px;
-  width: 140px;
+  width: 120px;
   -webkit-border-radius: 40px;
   -moz-border-radius: 40px;
   -ms-border-radius: 40px;
   -o-border-radius: 40px;
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
 }
 .congrats {
   font-family: fre;
@@ -503,8 +512,6 @@ tr {
   margin-bottom: 10%;
 }
 
-
-
 .hscoreContainer {
   position: absolute;
   display: flex;
@@ -608,13 +615,12 @@ tr {
   font-size: 2.2rem;
   font-weight: 400;
 }
-.currHScore{
-  font-family: tsuki; 
-   font-size: 2.2rem;
-   margin-bottom: -5% ;
-
+.currHScore {
+  font-family: tsuki;
+  font-size: 2.2rem;
+  margin-bottom: -5%;
 }
-#showTimer{
+#showTimer {
   color: rgba(39, 1, 44, 0.685);
 }
 #showTimer {
@@ -667,10 +673,10 @@ tr {
   text-align: left;
   font-size: 1.1em;
   font-style: italic;
-  list-style:none;
+  list-style: none;
   font-family: fre;
 }
-.rulesContainer{
+.rulesContainer {
   border-left: 5px solid rgb(0, 113, 128);
   border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -743,8 +749,7 @@ em {
   }
 }
 
-.tutorialHead 
-h2  {
+.tutorialHead h2 {
   text-align: center;
   font-family: tsuki !important;
   padding-top: 4%;
@@ -752,11 +757,181 @@ h2  {
 }
 
 /* responsive elements */
-@media screen and (max-width: 1304px){
+@media screen and (max-width: 1304px) {
   .hscoreContainer p {
-  font-size: 6rem;
+    font-size: 6rem;
+  }
+  .ball1,
+  .ball {
+    display: none;
+  }
 }
-.ball1, .ball{
-  display: none;
+
+@keyframes leafanimation {
+  0% {
+    transform: translate(900px, 500px) rotate(0deg);
+    color: rgba(255, 0, 0, 0);
+  }
+  20% {
+    transform: translate(850px, 450px) rotate(360deg);
+    color: rgba(255, 0, 0, 0);
+  }
+  40% {
+    transform: translate(450px, 200px) rotate(720deg);
+    color: rgba(255, 0, 0, 0);
+  }
+  60% {
+    transform: translate(100px, 100px) rotate(1080deg);
+    color: rgba(255, 0, 0, 0);
+  }
+  80% {
+    display: none;
+  }
+  100% {
+    display: none;
+  }
 }
+
+.my-logo {
+  position: absolute;
+  top: 0;
+  left: 60%;
+  height: 200px;
+  line-height: 200px;
+  font-size: 36px;
+  color: rgb(255, 0, 0);
+  animation: leafanimation 14s infinite;
+  -webkit-animation: leafanimation 14s infinite;
+  z-index: -1000000;
+}
+
+.my-logo div {
+  height: 200px;
+  width: 200px;
+}
+
+@keyframes leafanimation1 {
+  0% {
+    transform: translate(900px, 500px) rotate(0deg);
+    color: rgba(255, 0, 0, 0);
+    -webkit-transform: translate(900px, 500px) rotate(0deg);
+    -moz-transform: translate(900px, 500px) rotate(0deg);
+    -ms-transform: translate(900px, 500px) rotate(0deg);
+    -o-transform: translate(900px, 500px) rotate(0deg);
+  }
+  20% {
+    transform: translate(850px, 450px) rotate(360deg);
+    color: rgba(255, 0, 0, 0);
+    -webkit-transform: translate(850px, 450px) rotate(360deg);
+    -moz-transform: translate(850px, 450px) rotate(360deg);
+    -ms-transform: translate(850px, 450px) rotate(360deg);
+    -o-transform: translate(850px, 450px) rotate(360deg);
+  }
+  40% {
+    transform: translate(450px, 200px) rotate(720deg);
+    color: rgba(255, 0, 0, 0);
+    -webkit-transform: translate(450px, 200px) rotate(720deg);
+    -moz-transform: translate(450px, 200px) rotate(720deg);
+    -ms-transform: translate(450px, 200px) rotate(720deg);
+    -o-transform: translate(450px, 200px) rotate(720deg);
+  }
+  60% {
+    transform: translate(100px, 100px) rotate(1080deg);
+    color: rgba(255, 0, 0, 0);
+    -webkit-transform: translate(100px, 100px) rotate(1080deg);
+    -moz-transform: translate(100px, 100px) rotate(1080deg);
+    -ms-transform: translate(100px, 100px) rotate(1080deg);
+    -o-transform: translate(100px, 100px) rotate(1080deg);
+  }
+  80% {
+    transform: translate(100px, 100px) rotate(1080deg);
+    color: rgba(255, 0, 0, 0);
+    -webkit-transform: translate(100px, 100px) rotate(1080deg);
+    -moz-transform: translate(100px, 100px) rotate(1080deg);
+    -ms-transform: translate(100px, 100px) rotate(1080deg);
+    -o-transform: translate(100px, 100px) rotate(1080deg);
+  }
+  100% {
+    display: none;
+  }
+}
+
+.my-logo1 {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  height: 100px;
+  line-height: 100px;
+  font-size: 36px;
+  animation: leafanimation1 19s infinite;
+  -webkit-animation: leafanimation1 19s infinite;
+  z-index: -1000000;
+}
+
+.my-logo1 div {
+  height: 100px;
+  width: 100px;
+}
+
+@keyframes leafanimation2 {
+  0% {
+    transform: translate(900px, 500px) rotate(0deg);
+    color: rgba(255, 0, 0, 0);
+    -webkit-transform: translate(900px, 500px) rotate(0deg);
+    -moz-transform: translate(900px, 500px) rotate(0deg);
+    -ms-transform: translate(900px, 500px) rotate(0deg);
+    -o-transform: translate(900px, 500px) rotate(0deg);
+  }
+  20% {
+    transform: translate(850px, 450px) rotate(360deg);
+    color: rgba(255, 0, 0, 0);
+    -webkit-transform: translate(850px, 450px) rotate(360deg);
+    -moz-transform: translate(850px, 450px) rotate(360deg);
+    -ms-transform: translate(850px, 450px) rotate(360deg);
+    -o-transform: translate(850px, 450px) rotate(360deg);
+  }
+  40% {
+    transform: translate(450px, 200px) rotate(720deg);
+    color: rgba(255, 0, 0, 0);
+    -webkit-transform: translate(450px, 200px) rotate(720deg);
+    -moz-transform: translate(450px, 200px) rotate(720deg);
+    -ms-transform: translate(450px, 200px) rotate(720deg);
+    -o-transform: translate(450px, 200px) rotate(720deg);
+  }
+  60% {
+    transform: translate(100px, 100px) rotate(1080deg);
+    color: rgba(255, 0, 0, 0);
+    -webkit-transform: translate(100px, 100px) rotate(1080deg);
+    -moz-transform: translate(100px, 100px) rotate(1080deg);
+    -ms-transform: translate(100px, 100px) rotate(1080deg);
+    -o-transform: translate(100px, 100px) rotate(1080deg);
+  }
+  80% {
+    transform: translate(100px, 100px) rotate(1080deg);
+    color: rgba(255, 0, 0, 0);
+    -webkit-transform: translate(100px, 100px) rotate(1080deg);
+    -moz-transform: translate(100px, 100px) rotate(1080deg);
+    -ms-transform: translate(100px, 100px) rotate(1080deg);
+    -o-transform: translate(100px, 100px) rotate(1080deg);
+  }
+  100% {
+    display: none;
+  }
+}
+
+.my-logo2 {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 300px;
+  line-height: 300px;
+  font-size: 36px;
+  animation: leafanimation2 39s infinite;
+  -webkit-animation: leafanimation2 39s infinite;
+  z-index: -1000000;
+}
+
+.my-logo2 div {
+  height: 300px;
+  width: 300px;
 }
