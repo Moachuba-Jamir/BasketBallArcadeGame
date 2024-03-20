@@ -25,14 +25,18 @@
     <audio src="/assets//audio/30seconds.mp3" id="audio30"></audio>
     <audio src="/assets//audio/60seconds.mp3" id="audio60"></audio>
     <audio src="/assets//audio/90seconds.mp3" id="audio90"></audio>
+    <audio src="/assets//audio/press.wav" id="press"></audio>
 
     <audio src="/assets//audio/tickme.wav" id="tick"></audio>
     <audio src="/assets//audio/scoreBall.mp3" id="score"></audio>
     <audio src="/assets//audio/hScore.wav" id="hScoreAudio"></audio>
 
     <div class="container title">
-      <img class="ball" src="../../assets/images/ball.png" alt="ball.png">
-      <span class="gameTitle">  Arcade BasketBall Game</span></div>
+      <img class="ball" src="../../assets/images/ball2.png" alt="ball.png">
+      <span class="gameTitle">  Arcade BasketBall Game</span>
+      <img class="ball1" src="../../assets/images/ball2.png" alt="ball.png">
+    </div>
+
 
     <div class="container-fluid gameContainer">
       <div class="container score display neon-border1">
@@ -40,7 +44,6 @@
         <hr />
         <div class="scoreContainer">
           <p id="one" style="color: rgb(252, 255, 255)">Score:</p>
-         
         </div>
          <div class="press2play container">
             <h3 id="press2Start"> </h3>
@@ -112,13 +115,13 @@
         <hr />
         <h3 class="gametimer">Game Timer: <span id="showTimer"></span></h3>
         <div class="hscoreContainer">
-          <p id="hScore" style="color: rgb(237, 228, 95)"></p>
+          <p id="hScore" style="color: rgb(237, 228, 95);"></p>
         </div>
          
         <!-- high score display -->
         <div class="container currentHscore">
         
-          <h3 style="text-align: center">Current HighScore</h3>
+          <h3 class="currHScore" style="text-align: center">Current HighScore</h3>
              <hr />
           <div class="tableContainer">
             
@@ -142,7 +145,7 @@
     <!-- submit form -->
     <div class="container myFormcontainer" id="formContainer">
       <div class="highHeader">
-        <h3>Congrats on your new High score </h3>
+        <h3 class="congrats">Congrats on your new High score! </h3>
       </div>
       <br><hr>
       <div class="myform">
@@ -169,7 +172,7 @@
       <input
         class="submitInput"
         type="submit"
-        value="submit"
+        value="Submit"
         id="submitHscore"
       />
      </div>
@@ -259,15 +262,16 @@
         </div>  
         <hr>
         <div class="tutorialBody">
-          <h3>Welcome, here are some things to get you started!</h3>
+        <div class="rulesContainer">
           <li>You get 2 points for every score.</li>
           <li>There are 3 Game modes. <em>30 seconds  |  60 seconds  | 90 seconds.</em></li>
-          <li>Compete with other players and students to be the top high scorer!!</li>
+          <li>Compete with other players and students.</li>
           <li>You can submit your high scores to the leaderboard.</li>
           <li>Every game mode has it's own high scores and leaders.</li>
           <li>Players cannot change game modes while the game in underway.</li>
           <li>Press the <strong>Start button</strong> to start the game.</li>
           <li> Have fun!</li>
+      </div>
           <h4 >Press the <strong>Start button </strong> to play or Click anywhere to close</h4>
         </div>
     </div>

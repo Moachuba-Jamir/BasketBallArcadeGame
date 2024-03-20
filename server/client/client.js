@@ -36,7 +36,8 @@ const press2Start = document.getElementById("press2Start");
 const myLeader = document.getElementById("myleader");
 const tutorial = document.querySelector(".tutorial");
 const tutorial1 = document.getElementById("gameRules");
-const formContainer = document.getElementById("formContainer");
+const press = document.getElementById('press');
+
 var score = 0;
 var hScore = 0;
 p.innerHTML = score;
@@ -44,9 +45,6 @@ var gameStarted = false;
 var gameEnded;
 var newHighscore = false;
 var gameOver = false;
-// var hScore30 = localStorage.getItem("highscore30");
-// var hScore60 = localStorage.getItem("highscore60");
-// var hScore90 = localStorage.getItem("highscore90");
 var dept;
 var is30 = false,
   is60 = false,
@@ -71,6 +69,12 @@ function addHighScore(myuserTimer, myHscore) {
 // default value if no timer is selected
 var userTimer = parseInt(localStorage.getItem("userTimer"));
 
+myLeader.addEventListener('click', () => {
+  press.play();
+  press.currentTime = 0;
+});
+
+
 // adding eventListener to the submit buttons on Highscore
 btns.forEach((button) => {
   button.addEventListener("click", () => {
@@ -78,21 +82,33 @@ btns.forEach((button) => {
     switch (val) {
       case "BCA":
         dept = "BCA";
+        press.play();
+        press.currentTime = 0;
         break;
       case "MCA":
         dept = "MCA";
+        press.play();
+        press.currentTime = 0;
         break;
       case "BA":
         dept = "BA";
+        press.play();
+        press.currentTime = 0;
         break;
       case "B.COM":
         dept = "B.COM";
+        press.play();
+        press.currentTime = 0;
         break;
       case "MBA":
         dept = "MBA";
+        press.play();
+        press.currentTime = 0;
         break;
       case "MA":
         dept = "MA";
+        press.play();
+        press.currentTime = 0;
         break;
       default:
         console.log("Default option");
@@ -109,10 +125,10 @@ thirty.addEventListener("click", () => {
   audio90.pause();
   audio30.currentTime = 0;
   audio30.play();
-
+  press.play();
+  press.currentTime = 0;
   userTimer = 30;
   localStorage.setItem("userTimer", 30);
-  var msg = `Timer changed to ${userTimer} Seconds Press start to play! `;
   highScore.innerHTML = localStorage.getItem("highscore30");
   let myHscore = localStorage.getItem("highscore30");
   addHighScore(userTimer, myHscore);
@@ -134,7 +150,8 @@ sixty.addEventListener("click", () => {
   audio30.pause();
   audio60.currentTime = 0;
   audio60.play();
-
+  press.play();
+  press.currentTime = 0;
   userTimer = 60;
   localStorage.setItem("userTimer", 60);
   highScore.innerHTML = localStorage.getItem("highscore60");
@@ -157,7 +174,8 @@ ninety.addEventListener("click", () => {
   audio60.pause();
   audio90.currentTime = 0;
   audio90.play();
-
+  press.play();
+  press.currentTime = 0;
   userTimer = 90;
   localStorage.setItem("userTimer", 90);
   highScore.innerHTML = localStorage.getItem("highscore90");
@@ -173,14 +191,24 @@ ninety.addEventListener("click", () => {
   checkBtn(userTimer);
 });
 
+
 // on HighScore submit
-// pending error handling
 submitHscore.addEventListener("click", () => {
+  press.play();
+  press.currentTime = 0;
   let name = userName.value;
   // we store the values in the local storage
   if (is30 === true) {
     let userNewScore = localStorage.getItem("highscore30");
-    updatescore(name, dept, userNewScore);
+    // error handling 
+    if (name != '' && dept != '') {
+      updatescore(name, dept, userNewScore);
+        hideForm();
+        isSubmit = true;
+        newHighscore = false;
+    } else {
+      alert('kindly enter your name and dept');
+    }
     user30 = [];
     user30.push(name, dept);
     console.log(`from submit:  ${user30}`);
@@ -203,9 +231,7 @@ submitHscore.addEventListener("click", () => {
   } else {
     console.warn("error could not retrieve the highscore from an game modes!");
   }
-  hideForm();
-  isSubmit = true;
-  newHighscore = false;
+
 
   // displayForm();
   // update the leaderboards
@@ -286,9 +312,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // adding event listener rules
 tutorial1.addEventListener("click", () => {
+  press.play();
+  press.currentTime = 0;
   tutorial.classList.add("fade-in");
   tutorial.style.display = "block";
-  console.log("hello this is the rules ");
+  tutorial1.style.pointerEvents = 'none';
   setTimeout(() => {
     showRules = true;
   }, 10);
@@ -297,6 +325,7 @@ tutorial1.addEventListener("click", () => {
 window.addEventListener("click", () => {
   if (showRules === true) {
     tutorial.style.display = "none";
+    tutorial1.style.pointerEvents = 'auto';
     showRules = false;
   }
 });

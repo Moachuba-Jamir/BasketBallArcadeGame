@@ -97,6 +97,7 @@ export function pauseAllAudio() {
 
 export function myScore() {
   score.play();
+  score.currentTime = 0;
 }
 
 export function displayForm() {
@@ -157,16 +158,16 @@ export function checkBtn(myUserTimer) {
       sixty.style.pointerEvents = "auto";
       ninety.style.pointerEvents = "auto";
       thirty.style.backgroundColor = "rgba(2, 181, 187, 0.9)";
-      ninety.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
-      sixty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
+      ninety.style.backgroundColor = "rgba(1, 44, 100, 0.801)";
+      sixty.style.backgroundColor = "rgba(1, 44, 100, 0.801)";
       break;
 
     case 60:
       thirty.style.pointerEvents = "auto";
       sixty.style.pointerEvents = "none";
       ninety.style.pointerEvents = "auto";
-      thirty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
-      ninety.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
+      thirty.style.backgroundColor = "rgba(1, 44, 100, 0.801)";
+      ninety.style.backgroundColor = "rgba(1, 44, 100, 0.801)";
       sixty.style.backgroundColor = "rgba(2, 181, 187, 0.9)";
       break;
 
@@ -175,8 +176,8 @@ export function checkBtn(myUserTimer) {
       sixty.style.pointerEvents = "auto";
       ninety.style.pointerEvents = "none";
       ninety.style.backgroundColor = "rgba(2, 181, 187, 0.9)";
-      thirty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
-      sixty.style.backgroundColor = "rgba(100, 1, 79, 0.74)";
+      thirty.style.backgroundColor = "rgba(1, 44, 100, 0.801)";
+      sixty.style.backgroundColor = "rgba(1, 44, 100, 0.801)";
       break;
 
     default:

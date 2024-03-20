@@ -4,16 +4,68 @@
   box-sizing: border-box;
   overflow: hidden;
 }
+@font-face {
+  font-family: "tsuki";
+  src: url("../../assets/fonts/NineTsukiRegular.ttf");
+}
+@font-face {
+  font-family: "vanderick";
+  src: url("../../assets/fonts/vanderick-regular.ttf");
+}
+@font-face {
+  font-family: "rubick";
+  src: url("../../assets/fonts/RubikDirt-Regular.ttf");
+}
 
+@font-face {
+  font-family: "bungee";
+  src: url("../../assets/fonts/BungeeSpice-Regular.ttf");
+}
+
+@font-face {
+  font-family: "nunito";
+  src: url("../../assets/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf");
+}
+
+@font-face {
+  font-family: "fre";
+  src: url("../../assets/fonts/FrederickatheGreat-Regular.ttf");
+}
+
+@font-face {
+  font-family: "revolution";
+  src: url("../../assets/fonts/ProtestRevolution-Regular.ttf");
+}
 body {
-  background-image: linear-gradient(-245deg, #ffffffb9 46%, #f7daafc0 0%);
+  /* background-image: linear-gradient(-245deg, #ffffffb9 46%, #f7daafc0 0%);
+   */
+  background-image: url("/assets/images/bg2.jpg");
   position: relative;
+  background-repeat: no-repeat;
+  background-size: cover; /* Adjust the percentage as needed */
+  width: 100vw; /* 100% of viewport width */
+  height: 100vh;
   z-index: -1000;
 }
+
 .gameTitle {
   display: inline-block;
   text-align: center;
   font-size: 3.5rem;
+  font-family: revolution;
+  color: white;
+  background-color: rgba(150, 111, 6, 0.322);
+  border-radius: 30px;
+  border-top-right-radius: 50% !important;
+  border-top-left-radius: 50% !important;
+  font-size: 5rem;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+#gameTimer {
+  font-family: nunito;
 }
 .gameContainer {
   height: 100vh;
@@ -23,6 +75,14 @@ body {
   align-items: flex-start;
   justify-content: center;
   margin-top: 3% !important;
+  background-image: linear-gradient(45deg, #d3935e70 10%, #5355556c 90%);
+  border-radius: 80px;
+  -webkit-border-radius: 80px;
+  -moz-border-radius: 80px;
+  -ms-border-radius: 80px;
+  -o-border-radius: 80px;
+  margin-top: 2% !important;
+  padding-top: 1%;
 }
 .display {
   position: relative;
@@ -61,14 +121,22 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  background-image: linear-gradient(45deg, #9c8f8f75 10%, #000000d0 90%);
+  border-radius: 40px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  -ms-border-radius: 40px;
+  -o-border-radius: 40px;
 }
 
 /* ball spin */
 .ball {
-  width: 100px; /* Adjust size as needed */
-  animation: rotateBall 5s linear infinite; /* Adjust duration as needed */
-  margin-right: 2%;
+  width: 120px;
+  /*Adjustsizeasneeded*/
+  animation: rotateBall 9s linear infinite;
+  /*Adjustdurationasneeded*/
   margin-top: -5%;
+  -webkit-animation: rotateBall 5s linear infinite;
 }
 
 @keyframes rotateBall {
@@ -77,6 +145,23 @@ body {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+.ball1 {
+  width: 120px;
+  /*Adjustsizeasneeded*/
+  animation: rotateBall 9s linear infinite;
+  /*Adjustdurationasneeded*/
+  margin-top: -5%;
+  -webkit-animation: rotateBall1 5s linear infinite;
+}
+
+@keyframes rotateBall1 {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
   }
 }
 
@@ -90,7 +175,7 @@ body {
   -moz-transition: all 800ms ease-in-out;
   -ms-transition: all 800ms ease-in-out;
   -o-transition: all 800ms ease-in-out;
-  background-color: rgba(100, 1, 79, 0.74);
+  background-color: rgba(1, 44, 100, 0.801);
   border: none;
 }
 
@@ -173,15 +258,19 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(41, 41, 41, 0.877);
-  height: 50vh;
+  height: 60vh;
   width: 50vw;
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
+  background-image: url("../../assets/images/hs1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.9;
 }
+
 .highHeader {
   text-align: center;
   color: white;
@@ -190,9 +279,9 @@ body {
 .myDept {
   color: white;
   padding-top: 4%;
+  font-family: fre;
 }
-.myForm {
-}
+
 .myBtnContainer {
   display: flex;
   flex-direction: row;
@@ -209,7 +298,7 @@ body {
   height: 60px;
   width: 120px;
   transition: all 300ms ease-in;
-  background-color: rgba(116, 239, 255, 0.253);
+  background-color: rgba(1, 117, 73, 0.253);
   border-radius: 15px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -219,6 +308,8 @@ body {
   -moz-transition: all 300ms ease-in;
   -ms-transition: all 300ms ease-in;
   -o-transition: all 300ms ease-in;
+  font-family: revolution;
+  font-size: 1.5rem;
 }
 .myBtnContainer button:hover {
   transform: scale(1.1);
@@ -235,7 +326,7 @@ body {
 }
 .submitInput {
   height: 50px;
-  width: 170px;
+  width: 140px;
   margin-top: 2%;
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -249,7 +340,11 @@ body {
   -ms-transition: all 300ms ease-in-out;
   -o-transition: all 300ms ease-in-out;
   border: none;
-  background-color: antiquewhite;
+  background-color: rgba(146, 4, 82, 0.397);
+  color: white;
+  box-shadow: 0px 5px 15px 10px white;
+  font-family: revolution;
+  font-size: 1.5rem;
 }
 .submitInput:hover {
   border-radius: 40px;
@@ -258,6 +353,10 @@ body {
   -moz-border-radius: 40px;
   -ms-border-radius: 40px;
   -o-border-radius: 40px;
+}
+.congrats {
+  font-family: fre;
+  font-size: 2.5rem;
 }
 .myInput {
   display: flex;
@@ -288,7 +387,7 @@ input {
   width: 100px;
 }
 .nameInput {
-  height: 40px;
+  height: 45px;
   width: 100%;
 }
 .leaderDialog {
@@ -333,12 +432,12 @@ input {
   font-size: 1.2rem;
   height: 30px;
   width: 100%;
-  background-color: rgba(153, 5, 66, 0.281);
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  background-color: rgba(185, 85, 3, 0.281);
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
 }
 table {
   width: 100%;
@@ -378,7 +477,7 @@ tr {
 }
 td {
   text-align: center;
-  color: rgb(150, 3, 71);
+  color: rgb(3, 72, 77);
   font-weight: bold;
 }
 .currentHscore {
@@ -403,6 +502,8 @@ tr {
 .ninety {
   margin-bottom: 10%;
 }
+
+
 
 .hscoreContainer {
   position: absolute;
@@ -445,7 +546,8 @@ tr {
 
 #press2Start {
   text-align: center;
-  font-size: 2em;
+  font-size: 2.5em;
+  font-family: tsuki;
 }
 /* fadeout animation  */
 
@@ -502,6 +604,18 @@ tr {
 
 .gametimer {
   text-align: center;
+  font-family: tsuki;
+  font-size: 2.2rem;
+  font-weight: 400;
+}
+.currHScore{
+  font-family: tsuki; 
+   font-size: 2.2rem;
+   margin-bottom: -5% ;
+
+}
+#showTimer{
+  color: rgba(39, 1, 44, 0.685);
 }
 #showTimer {
   font-size: 1em;
@@ -510,7 +624,7 @@ tr {
   border: 1px dotted #2b2b2b;
   border-radius: 13%;
   padding: 20px;
-  background-image: linear-gradient(45deg, #4e023e96 10%, #74066e44 90%);
+  background-image: linear-gradient(45deg, #cacacaa8 10%, #89d1a78e 90%);
   box-shadow:
     0 0 6px rgba(71, 0, 39, 0.5),
     0 0 12px rgba(65, 0, 48, 0.5),
@@ -544,21 +658,30 @@ tr {
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
+  font-family: fre;
+  font-weight: bold;
 }
-.tutorialHead,
-h3 {
-  text-align: center;
-}
+
 .tutorial li {
   padding: 1.5%;
   text-align: left;
   font-size: 1.1em;
   font-style: italic;
+  list-style:none;
+  font-family: fre;
+}
+.rulesContainer{
+  border-left: 5px solid rgb(0, 113, 128);
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
 }
 .tutorial h4 {
   text-align: center;
   padding-top: 4%;
-  color: rgb(95, 1, 104);
+  color: rgb(77, 2, 64);
 }
 
 strong,
@@ -573,8 +696,8 @@ em {
   padding: 20px;
   background-image: linear-gradient(
     45deg,
-    #f0b763ad 0%,
-    hsla(315, 98%, 21%, 0.502) 100%
+    #f1974c8f 0%,
+    hsla(0, 0%, 78%, 0.685) 100%
   );
   box-shadow:
     0 0 6px rgba(71, 0, 39, 0.5),
@@ -618,4 +741,22 @@ em {
       0 0 60px rgba(51, 1, 51, 0.986),
       0 0 60px rgba(51, 1, 51, 0.986);
   }
+}
+
+.tutorialHead 
+h2  {
+  text-align: center;
+  font-family: tsuki !important;
+  padding-top: 4%;
+  font-size: 3rem;
+}
+
+/* responsive elements */
+@media screen and (max-width: 1304px){
+  .hscoreContainer p {
+  font-size: 6rem;
+}
+.ball1, .ball{
+  display: none;
+}
 }
