@@ -12,13 +12,14 @@ arduinoPort.on('open', ()=>{
 });
 
 //frontend user connection
-wss.on('connection', (user)=>{
+wss.on('connection', (user) => {
   console.log("user connected!");
   
   // sending the readings from arduino to the client.js in real time(as long as the conection is open)
   arduinoPort.on('data', (data)=>{
     readings = data.toString();
-      user.send(readings);
+        user.send(readings);
+
 });
 
 
