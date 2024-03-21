@@ -19,7 +19,8 @@
 
   <body>
     <!-- game audio fx  -->
-    <audio src="/assets//audio/lets go.mp3" id="start"></audio>
+   <div class="audiContainer">
+     <audio src="/assets//audio/lets go.mp3" id="start"></audio>
     <audio src="/assets//audio/ping1.mp3" id="timer"></audio>
     <audio src="/assets//audio/gameover.wav" id="buzzer"></audio>
     <audio src="/assets//audio/30seconds.mp3" id="audio30"></audio>
@@ -30,34 +31,33 @@
     <audio src="/assets//audio/tickme.wav" id="tick"></audio>
     <audio src="/assets//audio/scoreBall.mp3" id="score"></audio>
     <audio src="/assets//audio/hScore.wav" id="hScoreAudio"></audio>
+   </div>
 
     <div class="container title">
-      <img class="ball" src="../../assets/images/ball2.png" alt="ball.png">
-      <span class="gameTitle">  Arcade BasketBall Game</span>
-      <img class="ball1" src="../../assets/images/ball2.png" alt="ball.png">
+      <img class="ball" src="../../assets/images/ball2.png" alt="ball.png" />
+      <span class="gameTitle"> Arcade BasketBall Game</span>
+      <img class="ball1" src="../../assets/images/ball2.png" alt="ball.png" />
     </div>
 
-
+    <!-- game container -->
     <div class="container-fluid gameContainer">
+       <!-- user Score Container -->
       <div class="container score display neon-border1">
         <h1 class="header">Score</h1>
         <hr />
         <div class="scoreContainer">
           <p id="one" style="color: rgb(252, 255, 255)">Score:</p>
         </div>
-         <div class="press2play container">
-            <h3 id="press2Start"> </h3>
-          </div>
-       
-          <div class="rules">
-               <div class="line col-lg-12"></div>
-             <button
-                id="gameRules"
-                class="btn leader btn-primary"
-              >
-                Tutorial
-              </button>
-          </div>
+        <div class="press2play container">
+          <h3 id="press2Start"></h3>
+        </div>
+
+        <div class="rules">
+          <div class="line col-lg-12"></div>
+          <button id="gameRules" class="btn leader btn-primary">
+            Tutorial
+          </button>
+        </div>
       </div>
 
       <div class="container items">
@@ -76,7 +76,7 @@
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
               >
-                30 seconds
+                30 Seconds
               </button>
               <button
                 type="button"
@@ -85,7 +85,7 @@
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
               >
-                60 seconds
+                60 Seconds
               </button>
               <button
                 type="button"
@@ -94,7 +94,7 @@
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
               >
-                90 seconds
+                90 Seconds
               </button>
               <button
                 type="button"
@@ -115,16 +115,16 @@
         <hr />
         <h3 class="gametimer">Game Timer: <span id="showTimer"></span></h3>
         <div class="hscoreContainer">
-          <p id="hScore" style="color: rgb(237, 228, 95);"></p>
+          <p id="hScore" style="color: rgb(237, 228, 95)"></p>
         </div>
-         
+
         <!-- high score display -->
         <div class="container currentHscore">
-        
-          <h3 class="currHScore" style="text-align: center">Current HighScore</h3>
-             <hr />
+          <h3 class="currHScore" style="text-align: center">
+            Current HighScore
+          </h3>
+          <hr />
           <div class="tableContainer">
-            
             <table id="hscoreTable">
               <tr>
                 <th id="hscoreName">Name</th>
@@ -132,9 +132,9 @@
                 <th id="hscoreScore">Score</th>
               </tr>
               <tr>
-                <td id="name" style="color:rgb(255, 238, 4);"></td>
-                <td id="dept" style="color:rgb(255, 238, 4);"></td>
-                <td id="currentHscore" style="color:rgb(255, 238, 4);"></td>
+                <td id="name" style="color: rgb(255, 238, 4)"></td>
+                <td id="dept" style="color: rgb(255, 238, 4)"></td>
+                <td id="currentHscore" style="color: rgb(255, 238, 4)"></td>
               </tr>
             </table>
           </div>
@@ -145,40 +145,38 @@
     <!-- submit form -->
     <div class="container myFormcontainer" id="formContainer">
       <div class="highHeader">
-        <h3 class="congrats">Congrats on your new High score! </h3>
+        <h3 class="congrats">Congrats on your new High score!</h3>
       </div>
-      <br><hr>
+      <br />
+      <hr />
       <div class="myform">
-     <div class="myInput">
-            <input
-        id="userName"
-        class="nameInput"
-        type="text"
-        placeholder="Enter your name"
-      />
-     </div>
-     <h3 class="myDept">Select your department</h3>
-     <div class="myBtnContainer">
-       <button class="btns bca">BCA</button>
-      <button class="btns mca">MCA</button>
-      <button class="btns ba">BA</button>
-      <button class="btns bcom">B.COM</button>
-      <button class="btns mba">MBA</button>
-      <button class="btns ma">MA</button>
-      
-     </div>
+        <div class="myInput">
+          <input
+            id="userName"
+            class="nameInput"
+            type="text"
+            placeholder="Enter your name"
+          />
+        </div>
+        <h3 class="myDept">Select your department</h3>
+        <div class="myBtnContainer">
+          <button class="btns bca">BCA</button>
+          <button class="btns mca">MCA</button>
+          <button class="btns ba">BA</button>
+          <button class="btns bcom">B.COM</button>
+          <button class="btns mba">MBA</button>
+          <button class="btns ma">MA</button>
+        </div>
 
-     <div class="submitContainer">
-      <input
-        class="submitInput"
-        type="submit"
-        value="Submit"
-        id="submitHscore"
-      />
-     </div>
+        <div class="submitContainer">
+          <input
+            class="submitInput"
+            type="submit"
+            value="Submit"
+            id="submitHscore"
+          />
+        </div>
       </div>
-    </div>
-
     </div>
 
     <!-- LeaderBoard Modal -->
@@ -200,7 +198,7 @@
               aria-label="Close"
             ></button>
           </div>
-      
+
           <div class="modal-body leaderBody">
             <div class="container thirty">
               <h5 style="text-align: center">Time Mode: 30 Seconds</h5>
@@ -235,7 +233,7 @@
               </table>
             </div>
             <div class="container ninety">
-              <h5 style="text-align: center" >Time Mode: 90 Seconds</h5>
+              <h5 style="text-align: center">Time Mode: 90 Seconds</h5>
               <hr />
               <table class="fade-in">
                 <tr>
@@ -257,34 +255,40 @@
 
     <!-- tutorial -->
     <div class="container tutorial">
-        <div class="tutorialHead">
-          <h2> Things to know </h2>
-        </div>  
-        <hr>
-        <div class="tutorialBody">
+      <div class="tutorialHead">
+        <h2>Things to know</h2>
+      </div>
+      <hr />
+      <div class="tutorialBody">
         <div class="rulesContainer">
           <li>You get 2 points for every score.</li>
-          <li>There are 3 Game modes. <em>30 seconds  |  60 seconds  | 90 seconds.</em></li>
+          <li>
+            There are 3 Game modes.
+            <em>30 seconds | 60 seconds | 90 seconds.</em>
+          </li>
           <li>Compete with other players and students.</li>
           <li>You can submit your high scores to the leaderboard.</li>
           <li>Every game mode has it's own high scores and leaders.</li>
           <li>Players cannot change game modes while the game is underway.</li>
           <li>Press the <strong>Start button</strong> to start playing.</li>
-          <li> Have fun!</li>
-      </div>
-          <h4 >Press the <strong>Start button </strong> to play or Click anywhere to close</h4>
+          <li>Have fun!</li>
         </div>
+        <h4>
+          Press the <strong>Start button </strong> to play or Click anywhere to
+          close
+        </h4>
+      </div>
     </div>
 
     <div class="my-logo">
-<div><img src="../../assets/images/leaf.png" alt=""></div>
-</div>
+      <div><img src="../../assets/images/leaf.png" alt="" /></div>
+    </div>
     <div class="my-logo1">
-<div><img src="../../assets/images/leaf.png" alt=""></div>
-</div>
+      <div><img src="../../assets/images/leaf.png" alt="" /></div>
+    </div>
     <div class="my-logo2">
-<div><img src="../../assets/images/leaf.png" alt="leaf 3"></div>
-</div>
+      <div><img src="../../assets/images/leaf.png" alt="leaf 3" /></div>
+    </div>
 
     <script type="module" src="./client.js"></script>
     <script type="module" src="./functions.js"></script>

@@ -9,6 +9,7 @@ import {
   hideForm,
   updateLeaderboards,
   checkBtn,
+  checkDept,
 } from "./functions.js";
 
 const ws = new WebSocket("ws://localhost:7070");
@@ -36,7 +37,7 @@ const press2Start = document.getElementById("press2Start");
 const myLeader = document.getElementById("myleader");
 const tutorial = document.querySelector(".tutorial");
 const tutorial1 = document.getElementById("gameRules");
-const press = document.getElementById('press');
+const press = document.getElementById("press");
 
 var score = 0;
 var hScore = 0;
@@ -69,51 +70,17 @@ function addHighScore(myuserTimer, myHscore) {
 // default value if no timer is selected
 var userTimer = parseInt(localStorage.getItem("userTimer"));
 
-myLeader.addEventListener('click', () => {
+//leaderboards click event listener
+myLeader.addEventListener("click", () => {
   press.play();
   press.currentTime = 0;
 });
-
 
 // adding eventListener to the submit buttons on Highscore
 btns.forEach((button) => {
   button.addEventListener("click", () => {
     let val = button.innerHTML;
-    switch (val) {
-      case "BCA":
-        dept = "BCA";
-        press.play();
-        press.currentTime = 0;
-        break;
-      case "MCA":
-        dept = "MCA";
-        press.play();
-        press.currentTime = 0;
-        break;
-      case "BA":
-        dept = "BA";
-        press.play();
-        press.currentTime = 0;
-        break;
-      case "B.COM":
-        dept = "B.COM";
-        press.play();
-        press.currentTime = 0;
-        break;
-      case "MBA":
-        dept = "MBA";
-        press.play();
-        press.currentTime = 0;
-        break;
-      case "MA":
-        dept = "MA";
-        press.play();
-        press.currentTime = 0;
-        break;
-      default:
-        console.log("Default option");
-        break;
-    }
+    checkDept(val);
   });
 });
 
@@ -191,7 +158,6 @@ ninety.addEventListener("click", () => {
   checkBtn(userTimer);
 });
 
-
 // on HighScore submit
 submitHscore.addEventListener("click", () => {
   press.play();
@@ -200,14 +166,14 @@ submitHscore.addEventListener("click", () => {
   // we store the values in the local storage
   if (is30 === true) {
     let userNewScore = localStorage.getItem("highscore30");
-    // error handling 
-    if (name != '' && dept != '') {
+    // error handling
+    if (name != "" && dept != "") {
       updatescore(name, dept, userNewScore);
-        hideForm();
-        isSubmit = true;
-        newHighscore = false;
+      hideForm();
+      isSubmit = true;
+      newHighscore = false;
     } else {
-      alert('Kindly enter both your name and department....');
+      alert("Kindly enter both your name and department....");
     }
     user30 = [];
     user30.push(name, dept);
@@ -231,7 +197,6 @@ submitHscore.addEventListener("click", () => {
   } else {
     console.warn("error could not retrieve the highscore from an game modes!");
   }
-
 
   // displayForm();
   // update the leaderboards
@@ -316,7 +281,7 @@ tutorial1.addEventListener("click", () => {
   press.currentTime = 0;
   tutorial.classList.add("fade-in");
   tutorial.style.display = "block";
-  tutorial1.style.pointerEvents = 'none';
+  tutorial1.style.pointerEvents = "none";
   setTimeout(() => {
     showRules = true;
   }, 10);
@@ -325,7 +290,7 @@ tutorial1.addEventListener("click", () => {
 window.addEventListener("click", () => {
   if (showRules === true) {
     tutorial.style.display = "none";
-    tutorial1.style.pointerEvents = 'auto';
+    tutorial1.style.pointerEvents = "auto";
     showRules = false;
   }
 });
@@ -390,7 +355,7 @@ ws.addEventListener("message", ({ data }) => {
       myHscore.play();
       setTimeout(() => {
         myHscore.pause();
-        myHscore.currentTime = 0
+        myHscore.currentTime = 0;
       }, 2000);
     } else if (score > hScore60 && userTimer === 60) {
       newHighscore = true;
@@ -399,7 +364,7 @@ ws.addEventListener("message", ({ data }) => {
       myHscore.play();
       setTimeout(() => {
         myHscore.pause();
-        myHscore.currentTime = 0
+        myHscore.currentTime = 0;
       }, 2000);
     } else if (score > hScore90 && userTimer === 90) {
       newHighscore = true;
@@ -408,7 +373,7 @@ ws.addEventListener("message", ({ data }) => {
       myHscore.play();
       setTimeout(() => {
         myHscore.pause();
-        myHscore.currentTime = 0
+        myHscore.currentTime = 0;
       }, 2000);
     }
   }

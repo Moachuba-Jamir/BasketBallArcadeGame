@@ -4,6 +4,7 @@
   box-sizing: border-box;
   overflow: hidden;
 }
+/* custom font families */
 @font-face {
   font-family: "tsuki";
   src: url("../../assets/fonts/NineTsukiRegular.ttf");
@@ -36,14 +37,13 @@
   font-family: "revolution";
   src: url("../../assets/fonts/ProtestRevolution-Regular.ttf");
 }
+
 body {
-  /* background-image: linear-gradient(-245deg, #ffffffb9 46%, #f7daafc0 0%);
-   */
   background-image: url("/assets/images/bg2.jpg");
   position: relative;
   background-repeat: no-repeat;
-  background-size: cover; /* Adjust the percentage as needed */
-  width: 100vw; /* 100% of viewport width */
+  background-size: cover;
+  width: 100vw;
   height: 100vh;
   z-index: -1000;
 }
@@ -770,22 +770,18 @@ em {
 @keyframes leafanimation {
   0% {
     transform: translate(900px, 500px) rotate(0deg);
-    color: rgba(255, 0, 0, 0);
   }
   20% {
     transform: translate(850px, 450px) rotate(360deg);
-    color: rgba(255, 0, 0, 0);
   }
   40% {
     transform: translate(450px, 200px) rotate(720deg);
-    color: rgba(255, 0, 0, 0);
   }
   60% {
     transform: translate(100px, 100px) rotate(1080deg);
-    color: rgba(255, 0, 0, 0);
   }
   80% {
-    display: none;
+    transform: translate(50px, 50px) rotate(1080deg);
   }
   100% {
     display: none;
@@ -797,9 +793,6 @@ em {
   top: 0;
   left: 60%;
   height: 200px;
-  line-height: 200px;
-  font-size: 36px;
-  color: rgb(255, 0, 0);
   animation: leafanimation 14s infinite;
   -webkit-animation: leafanimation 14s infinite;
   z-index: -1000000;
@@ -813,43 +806,18 @@ em {
 @keyframes leafanimation1 {
   0% {
     transform: translate(900px, 500px) rotate(0deg);
-    color: rgba(255, 0, 0, 0);
-    -webkit-transform: translate(900px, 500px) rotate(0deg);
-    -moz-transform: translate(900px, 500px) rotate(0deg);
-    -ms-transform: translate(900px, 500px) rotate(0deg);
-    -o-transform: translate(900px, 500px) rotate(0deg);
   }
   20% {
     transform: translate(850px, 450px) rotate(360deg);
-    color: rgba(255, 0, 0, 0);
-    -webkit-transform: translate(850px, 450px) rotate(360deg);
-    -moz-transform: translate(850px, 450px) rotate(360deg);
-    -ms-transform: translate(850px, 450px) rotate(360deg);
-    -o-transform: translate(850px, 450px) rotate(360deg);
   }
   40% {
     transform: translate(450px, 200px) rotate(720deg);
-    color: rgba(255, 0, 0, 0);
-    -webkit-transform: translate(450px, 200px) rotate(720deg);
-    -moz-transform: translate(450px, 200px) rotate(720deg);
-    -ms-transform: translate(450px, 200px) rotate(720deg);
-    -o-transform: translate(450px, 200px) rotate(720deg);
   }
   60% {
     transform: translate(100px, 100px) rotate(1080deg);
-    color: rgba(255, 0, 0, 0);
-    -webkit-transform: translate(100px, 100px) rotate(1080deg);
-    -moz-transform: translate(100px, 100px) rotate(1080deg);
-    -ms-transform: translate(100px, 100px) rotate(1080deg);
-    -o-transform: translate(100px, 100px) rotate(1080deg);
   }
   80% {
-    transform: translate(100px, 100px) rotate(1080deg);
-    color: rgba(255, 0, 0, 0);
-    -webkit-transform: translate(100px, 100px) rotate(1080deg);
-    -moz-transform: translate(100px, 100px) rotate(1080deg);
-    -ms-transform: translate(100px, 100px) rotate(1080deg);
-    -o-transform: translate(100px, 100px) rotate(1080deg);
+    transform: translate(20px, 50px) rotate(1080deg);
   }
   100% {
     display: none;
@@ -861,8 +829,6 @@ em {
   top: 20%;
   left: 50%;
   height: 100px;
-  line-height: 100px;
-  font-size: 36px;
   animation: leafanimation1 19s infinite;
   -webkit-animation: leafanimation1 19s infinite;
   z-index: -1000000;
@@ -876,43 +842,18 @@ em {
 @keyframes leafanimation2 {
   0% {
     transform: translate(900px, 500px) rotate(0deg);
-    color: rgba(255, 0, 0, 0);
-    -webkit-transform: translate(900px, 500px) rotate(0deg);
-    -moz-transform: translate(900px, 500px) rotate(0deg);
-    -ms-transform: translate(900px, 500px) rotate(0deg);
-    -o-transform: translate(900px, 500px) rotate(0deg);
   }
   20% {
     transform: translate(850px, 450px) rotate(360deg);
-    color: rgba(255, 0, 0, 0);
-    -webkit-transform: translate(850px, 450px) rotate(360deg);
-    -moz-transform: translate(850px, 450px) rotate(360deg);
-    -ms-transform: translate(850px, 450px) rotate(360deg);
-    -o-transform: translate(850px, 450px) rotate(360deg);
   }
   40% {
     transform: translate(450px, 200px) rotate(720deg);
-    color: rgba(255, 0, 0, 0);
-    -webkit-transform: translate(450px, 200px) rotate(720deg);
-    -moz-transform: translate(450px, 200px) rotate(720deg);
-    -ms-transform: translate(450px, 200px) rotate(720deg);
-    -o-transform: translate(450px, 200px) rotate(720deg);
   }
   60% {
     transform: translate(100px, 100px) rotate(1080deg);
-    color: rgba(255, 0, 0, 0);
-    -webkit-transform: translate(100px, 100px) rotate(1080deg);
-    -moz-transform: translate(100px, 100px) rotate(1080deg);
-    -ms-transform: translate(100px, 100px) rotate(1080deg);
-    -o-transform: translate(100px, 100px) rotate(1080deg);
   }
   80% {
     transform: translate(100px, 100px) rotate(1080deg);
-    color: rgba(255, 0, 0, 0);
-    -webkit-transform: translate(100px, 100px) rotate(1080deg);
-    -moz-transform: translate(100px, 100px) rotate(1080deg);
-    -ms-transform: translate(100px, 100px) rotate(1080deg);
-    -o-transform: translate(100px, 100px) rotate(1080deg);
   }
   100% {
     display: none;
@@ -924,8 +865,6 @@ em {
   top: 0%;
   left: 0%;
   height: 300px;
-  line-height: 300px;
-  font-size: 36px;
   animation: leafanimation2 39s infinite;
   -webkit-animation: leafanimation2 39s infinite;
   z-index: -1000000;
