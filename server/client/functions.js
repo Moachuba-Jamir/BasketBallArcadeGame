@@ -4,12 +4,8 @@ var intervalId;
 const playTimer = document.getElementById("timer");
 const start = document.getElementById("start");
 const buzzer = document.getElementById("buzzer");
-const sixtyVoice = document.getElementById("sixtyVoice");
 const tick = document.getElementById("tick");
 const score = document.getElementById("score");
-const formContainer = document.getElementById("formContainer");
-
-const submitHscore = document.getElementById("submitHscore");
 const name = document.getElementById("name");
 const dept = document.getElementById("dept");
 const currentHscore = document.getElementById("currentHscore");
@@ -182,5 +178,43 @@ export function checkBtn(myUserTimer) {
 
     default:
       console.log("timer button error handling: something went wrong! ");
+  }
+}
+
+export function checkDept(val) {
+  switch (val) {
+    case "BCA":
+      dept = "BCA";
+      press.play();
+      press.currentTime = 0;
+      break;
+    case "MCA":
+      dept = "MCA";
+      press.play();
+      press.currentTime = 0;
+      break;
+    case "BA":
+      dept = "BA";
+      press.play();
+      press.currentTime = 0;
+      break;
+    case "B.COM":
+      dept = "B.COM";
+      press.play();
+      press.currentTime = 0;
+      break;
+    case "MBA":
+      dept = "MBA";
+      press.play();
+      press.currentTime = 0;
+      break;
+    case "MA":
+      dept = "MA";
+      press.play();
+      press.currentTime = 0;
+      break;
+    default:
+      console.log("Default option");
+      break;
   }
 }
