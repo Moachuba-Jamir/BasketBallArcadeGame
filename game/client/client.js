@@ -9,7 +9,6 @@ import {
   hideForm,
   updateLeaderboards,
   checkBtn,
-  checkDept,
 } from "./functions.js";
 
 const ws = new WebSocket("ws://localhost:7070");
@@ -80,7 +79,41 @@ myLeader.addEventListener("click", () => {
 btns.forEach((button) => {
   button.addEventListener("click", () => {
     let val = button.innerHTML;
-    checkDept(val);
+    switch (val) {
+      case "BCA":
+        dept = "BCA";
+        press.play();
+        press.currentTime = 0;
+        break;
+      case "MCA":
+        dept = "MCA";
+        press.play();
+        press.currentTime = 0;
+        break;
+      case "BA":
+        dept = "BA";
+        press.play();
+        press.currentTime = 0;
+        break;
+      case "B.COM":
+        dept = "B.COM";
+        press.play();
+        press.currentTime = 0;
+        break;
+      case "MBA":
+        dept = "MBA";
+        press.play();
+        press.currentTime = 0;
+        break;
+      case "MA":
+        dept = "MA";
+        press.play();
+        press.currentTime = 0;
+        break;
+      default:
+        console.log("Default option");
+        break;
+    }
   });
 });
 
@@ -181,15 +214,30 @@ submitHscore.addEventListener("click", () => {
     localStorage.setItem("userHighScore30", JSON.stringify(user30));
   } else if (is60 === true) {
     let userNewScore = localStorage.getItem("highscore60");
-    console.log(`from 60 : ${is30} : ${is60}`);
-    updatescore(name, dept, userNewScore);
+
+    // error handling
+    if (name != "" && dept != "") {
+      updatescore(name, dept, userNewScore);
+      hideForm();
+      isSubmit = true;
+      newHighscore = false;
+    } else {
+      alert("Kindly enter both your name and department....");
+    }
     user30 = [];
     user60.push(name, dept);
     console.log(`from submit:  ${user60}`);
     localStorage.setItem("userHighScore60", JSON.stringify(user60));
   } else if (is90 === true) {
     let userNewScore = localStorage.getItem("highscore90");
-    updatescore(name, dept, userNewScore);
+    if (name != "" && dept != "") {
+      updatescore(name, dept, userNewScore);
+      hideForm();
+      isSubmit = true;
+      newHighscore = false;
+    } else {
+      alert("Kindly enter both your name and department....");
+    }
     user30 = [];
     user90.push(name, dept);
     console.log(`from submit:  ${user90}`);
