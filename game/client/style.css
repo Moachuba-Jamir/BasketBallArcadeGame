@@ -251,7 +251,15 @@ body {
 .modal-backdrop {
   background-color: rgba(255, 255, 255, 0);
 }
-
+.modal-header {
+  font-family: tsuki;
+  text-align: center;
+  margin: -2% !important;
+}
+.modal-title {
+  width: 100%;
+  font-size: 2.6rem;
+}
 #formContainer {
   display: none;
   position: absolute;
@@ -438,7 +446,8 @@ input {
 }
 
 .leaderBody h5 {
-  font-size: 1.2rem;
+  font-size: 1.7rem;
+  font-family: tsuki;
   height: 30px;
   width: 100%;
   background-color: rgba(185, 85, 3, 0.281);
