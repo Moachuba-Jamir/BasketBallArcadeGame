@@ -4,6 +4,7 @@
   box-sizing: border-box;
   overflow: hidden;
 }
+
 /* custom font families */
 @font-face {
   font-family: "tsuki";
@@ -266,6 +267,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 10000;
   height: 60vh;
   width: 50vw;
   border-radius: 30px;
@@ -273,11 +275,11 @@ body {
   -moz-border-radius: 30px;
   -ms-border-radius: 30px;
   -o-border-radius: 30px;
-  background-color: rgba(1, 5, 49, 0.938);
+  background-color: rgba(63, 63, 63, 0.938);
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.9;
-  border-inline: 6px dashed rgb(214, 119, 3);
+  border-inline: 2px dashed rgb(214, 119, 3);
 }
 
 .highHeader {
@@ -460,6 +462,7 @@ input {
 table {
   width: 100%;
   border-collapse: collapse !important;
+  color: rgb(168, 83, 3);
   color: white;
 }
 .rules {

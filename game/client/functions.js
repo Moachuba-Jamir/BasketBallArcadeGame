@@ -27,20 +27,38 @@ const sixty = document.getElementById("sixty");
 const ninety = document.getElementById("ninety");
 const myLeader = document.getElementById("myleader");
 
+// main game container
+const mainContainer = document.getElementById("myMainContainer");
+// game splash
+const loadingGame = document.getElementById("loadingGame");
+
+export function initialGame() {
+  loadingGame.style.display = "block";
+  setTimeout(() => {
+    mainContainer.style.display = "block";
+    loadingGame.style.display = "none";
+  }, 3000);
+}
+
 // game functions
 export function startTimer(userTimer) {
   if (intervalId) clearInterval(intervalId);
   var timer = userTimer;
   intervalId = setInterval(() => {
     timer -= 1;
+
     if (timer >= 0) {
       gameTimer.innerHTML = timer;
       if (timer >= 10) {
+        gameTimer.style.color = "black";
         tick.play();
         playTimer.pause();
-      } else {
+      }
+      // game logic for when timer is less than 10
+      else {
         playTimer.play();
         tick.pause();
+        gameTimer.style.color = "rgb(168, 83, 3)";
       }
     } else if (timer < 0) {
       clearInterval(intervalId);
@@ -180,4 +198,3 @@ export function checkBtn(myUserTimer) {
       console.log("timer button error handling: something went wrong! ");
   }
 }
-
