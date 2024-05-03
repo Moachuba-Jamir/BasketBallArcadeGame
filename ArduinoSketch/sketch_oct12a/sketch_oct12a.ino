@@ -3,14 +3,20 @@
 //brown = 5v
 //white = ground
 #define SERIAL_PORT Serial
-//Ir sensor testing 
+
 int irSensor =  8;
-// int switchValue = 0;
+int switchPin = 2;
 
 void setup() {
   // put your setup code here, to run once:
-  pinMode(2, INPUT_PULLUP);
+
+  // for switch 
+  pinMode(switchPin, INPUT_PULLUP);
+
+  // extablishing connection to USB port with a baud rate of 9600
   SERIAL_PORT.begin(9600);
+
+  // for IR sensor 
   pinMode(irSensor, INPUT);
 };
 
@@ -19,14 +25,14 @@ void loop() {
   int sensorVal = digitalRead(irSensor);
 
   if(sensorVal == HIGH){
-      SERIAL_PORT.println(0); //obstacle not detected
+    SERIAL_PORT.println(0); //Object not detected
   }else{
-    SERIAL_PORT.println(1); //obstacle detected
-    delay(300);
+    SERIAL_PORT.println(1); //object detected
+    delay(200);
   }
     delay(20);
 
-    int pinValue = digitalRead(2);
+    int pinValue = digitalRead(switchPin);
     
     if(pinValue == LOW){
       // switchValue = pinValue;

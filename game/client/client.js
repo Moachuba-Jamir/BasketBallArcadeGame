@@ -37,7 +37,7 @@ const myLeader = document.getElementById("myleader");
 const tutorial = document.querySelector(".tutorial");
 const tutorial1 = document.getElementById("gameRules");
 const press = document.getElementById("press");
-
+const formContainer = document.getElementById('formContainer');
 var score = 0;
 var hScore = 0;
 p.innerHTML = score;
@@ -243,7 +243,7 @@ submitHscore.addEventListener("click", () => {
     console.log(`from submit:  ${user90}`);
     localStorage.setItem("userHighScore90", JSON.stringify(user90));
   } else {
-    console.warn("error could not retrieve the highscore from an game modes!");
+    console.warn("error could not retrieve the highscore from current game modes!");
   }
 
   // displayForm();
@@ -365,6 +365,7 @@ ws.addEventListener("message", ({ data }) => {
   } else {
     highScore.innerHTML = localStorage.getItem("highscore90");
   }
+  console.log(data);
   //setting state for game modes
   switch (userTimer) {
     case 30:
@@ -479,6 +480,7 @@ ws.addEventListener("message", ({ data }) => {
     ninety.style.pointerEvents = "auto";
     myLeader.style.pointerEvents = "auto";
     leaderModal.classList.remove("fade-out");
+    gameTimer.style.color = "black";
     gameOver = true;
     press2Start.innerHTML = "Press start 2 play Again!!";
     // myLeader.style.pointerEvents = 'auto';
